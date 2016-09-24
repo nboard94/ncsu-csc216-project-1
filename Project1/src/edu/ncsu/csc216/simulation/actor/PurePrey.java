@@ -2,6 +2,9 @@ package edu.ncsu.csc216.simulation.actor;
 
 import java.awt.Color;
 
+import edu.ncsu.csc216.simulation.environment.EcoGrid;
+import edu.ncsu.csc216.simulation.environment.utils.Location;
+
 public class PurePrey extends Animal {
 
 	int age = 0;
