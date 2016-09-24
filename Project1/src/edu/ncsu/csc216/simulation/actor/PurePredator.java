@@ -7,17 +7,17 @@ import edu.ncsu.csc216.simulation.environment.utils.Location;
 
 public class PurePredator extends Animal{
 
-	PurePredator(char c) {
+	public PurePredator(char c) {
 		super(c);
 	}
 
 	@Override
-	Color getColor() {
+	public Color getColor() {
 		return null;
 	}
 
 	@Override
-	void act(Location l, EcoGrid e) {
+	public void act(Location l, EcoGrid e) {
 		
 	}
 

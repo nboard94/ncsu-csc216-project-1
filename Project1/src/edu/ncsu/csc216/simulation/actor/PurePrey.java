@@ -7,19 +7,19 @@ import edu.ncsu.csc216.simulation.environment.utils.Location;
 
 public class PurePrey extends Animal {
 
-	int age = 0;
+	private int age = 0;
 	
-	PurePrey(char c) {
+	public PurePrey(char c) {
 		super(c);
 	}
 
 	@Override
-	Color getColor() {
+	public Color getColor() {
 		return null;
 	}
 
 	@Override
-	void act(Location l, EcoGrid e) {
+	public void act(Location l, EcoGrid e) {
 		
 	}
 
