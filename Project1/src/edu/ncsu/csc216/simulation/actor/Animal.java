@@ -8,59 +8,105 @@ import edu.ncsu.csc216.simulation.environment.utils.Location;
 
 public abstract class Animal {
 
+	/** Steps that have passed since the animal's last meal */
 	private int timeSinceLastMeal;
+	/** Steps that have passed since the animal bred */
 	private int timeSinceLastBreed;
+	/** Indicates whether or not an animal is disabled for the coming step */
 	private boolean canActThisStep;
+	/** Symbol that represents the animal */
 	private char symbol;
+	/** Indicates whether the animal is dead or alive */
 	private boolean alive;
+	/** */
 	private static int seed;
+	/** */
 	private static Random randomGenerator;
 	
-	Animal(char c) {
+	/**
+	 * Constructor for an animal object
+	 * @param c the symbol to represent this animal
+	 */
+	public Animal(char c) {
 		
 	}
 	
 	//not yet implemented
-	static void setRandomSeed(int s) {
+	public static void setRandomSeed(int s) {
 		
 	}
 	
-	char getSymbol() {
+	/**
+	 * retrieves animal's symbol
+	 * @return symbol representing the animal
+	 */
+	public char getSymbol() {
 		return symbol;
 	}
 	
-	boolean isAlive() {
+	/**
+	 * Retrieves value for animal's dead or alive status.
+	 * @return alive representing alive or dead
+	 */
+	public boolean isAlive() {
 		return alive;
 	}
 	
-	void enable() {
+	/**
+	 * When called, enables the animal.
+	 */
+	public void enable() {
 		canActThisStep = true;
 	}
 	
-	void disable() {
+	/**
+	 * When called, disables the animal.
+	 */
+	public void disable() {
 		canActThisStep = false;
 	}
 	
+	/**
+	 * When called, puts the animal out of its misery.
+	 */
 	protected void die() {
 		alive = false;
 	}
 	
+	/**
+	 * Indicates whether an animal can act in the next step or not.
+	 * @return canActThisStep True if the animal can act in the next step.
+	 */
 	protected boolean canAct() {
 		return canActThisStep;
 	}
 	
+	/**
+	 * Retrieves amount of time since the animal last bred. 
+	 * @return timeSinceLastBreed Steps since the animal last bred.
+	 */
 	protected int getTimeSinceLastBreed() {
 		return timeSinceLastBreed;
 	}
 	
+	/**
+	 * Retrieves amount of time since the animal last ate. 
+	 * @return timeSinceLastMeal Steps since the animal last had a meal.
+	 */
 	protected int getTimeSinceLastMeal() {
 		return timeSinceLastMeal;
 	}
 	
+	/**
+	 * When called, increments the time since an animal ate by 1.
+	 */
 	protected void incrementTimeSinceLastMeal() {
 		timeSinceLastMeal++;
 	}
 	
+	/**
+	 * When called, increments the time since an animal bred by 1.
+	 */
 	protected void incrementTimeSinceLastBreed() {
 		timeSinceLastBreed++;
 	}
@@ -80,9 +126,9 @@ public abstract class Animal {
 		return false;
 	}
 	
-	abstract Color getColor();
+	public abstract Color getColor();
 	
-	abstract void act(Location l, EcoGrid e);
+	public abstract void act(Location l, EcoGrid e);
 	
 	protected abstract boolean pastBreedTime(int i);
 	
