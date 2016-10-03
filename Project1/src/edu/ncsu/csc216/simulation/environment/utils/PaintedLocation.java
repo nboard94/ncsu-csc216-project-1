@@ -7,7 +7,7 @@ public class PaintedLocation extends Location {
 	private Color tint;
 	private char symbol;
 	
-	PaintedLocation(int r, int c, Color t, char s) {
+	public PaintedLocation(int r, int c, Color t, char s) {
 		super(r, c);
 		this.tint = t;
 		this.symbol = s;

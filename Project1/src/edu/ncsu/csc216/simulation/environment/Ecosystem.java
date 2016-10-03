@@ -8,67 +8,67 @@ public class Ecosystem {
 	private int maxRows;
 	private int maxColumns;
 	
-	Ecosystem(int r, int c) {
+	public Ecosystem(int r, int c) {
 		
 	}
 	
 	//nyi
-	boolean isEmpty(Location l) {
+	public boolean isEmpty(Location l) {
 		return false;
 	}
 	
 	//nyi
-	Animal getItemAt(Location l) {
+	public Animal getItemAt(Location l) {
 		return null;
 	}
 	
 	//nyi
-	void remove(Location l) {
+	public void remove(Location l) {
 		
 	}
 	
 	//nyi
-	void add(Animal a, Location l) {
+	public void add(Animal a, Location l) {
 		
 	}
 	
 	//nyi
-	Location findFirstEmptyNeighbor(Location l, int i) {
+	public Location findFirstEmptyNeighbor(Location l, int i) {
 		return null;
 	}
 	
 	//nyi
-	Location dueNorth(Location l) {
+	public Location dueNorth(Location l) {
 		return null;
 	}
 	
 	//nyi
-	Location dueSouth(Location l) {
+	public Location dueSouth(Location l) {
 		return null;
 	}
 	
 	//nyi
-	Location dueEast(Location l) {
+	public Location dueEast(Location l) {
 		return null;
 	}
 	
 	//nyi
-	Location dueWest(Location l) {
+	public Location dueWest(Location l) {
 		return null;
 	}
 	
 	//nyi
-	Animal[][] getMap() {
+	public Animal[][] getMap() {
 		return null;
 	}
 	
 	//nyi
-	void enableTheLiving() {
+	public void enableTheLiving() {
 		
 	}
 	
 	//nyi
-	void buryTheDead() {
+	public void buryTheDead() {
 		
 	}
 }

@@ -5,16 +5,16 @@ public class Location {
 	private int row;
 	private int column;
 	
-	Location(int r, int c) {
+	public Location(int r, int c) {
 		this.row = r;
 		this.column = c;
 	}
 	
-	int getRow() {
+	public int getRow() {
 		return row;
 	}
 	
-	int getColumn() {
+	public int getColumn() {
 		return column;
 	}
 }
