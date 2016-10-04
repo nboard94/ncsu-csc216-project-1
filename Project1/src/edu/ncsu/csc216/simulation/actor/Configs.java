@@ -138,7 +138,7 @@ public class Configs {
 	 * retrieves medium animal's breed time
 	 * @return BREED_TIME[1] the value for the medium animal's breed time
 	 */
-	public static int getMediumBreedTime() {
+	public static int getMiddleBreedTime() {
 		return BREED_TIME[1];
 	}
 	
