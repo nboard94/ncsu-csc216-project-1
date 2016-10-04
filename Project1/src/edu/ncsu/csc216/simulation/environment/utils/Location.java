@@ -14,7 +14,7 @@ public class Location {
 		return row;
 	}
 	
-	public int getColumn() {
+	public int getCol() {
 		return column;
 	}
 }

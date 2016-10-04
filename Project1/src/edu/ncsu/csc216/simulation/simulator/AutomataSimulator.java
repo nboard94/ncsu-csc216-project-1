@@ -15,10 +15,6 @@ public class AutomataSimulator implements SimulatorInterface {
 	private int numberOfNames;
 	private char[] symbol;
 	private static final char EMPTY = ' ';
-	private EcoGrid simpleSystem;
-
-
-	
 	public AutomataSimulator(String s) {
 		
 	}
