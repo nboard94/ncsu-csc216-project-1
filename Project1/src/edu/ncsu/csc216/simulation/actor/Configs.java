@@ -114,7 +114,7 @@ public class Configs {
 	 * retrieves medium animal's starve time
 	 * @return STARVE_TIME[1] the value for the medium animal's starve time
 	 */
-	public static int getMediumStarveTime() {
+	public static int getMiddleStarveTime() {
 		return STARVE_TIME[1];
 	}
 	
