@@ -15,11 +15,13 @@ public interface SimulatorInterface {
 	
 	/**
 	 * Classes implementing SimulatorInterface must implement getView.
+	 * @return The view according to color and symbol.
 	 */
 	PaintedLocation[][] getView();
 	
 	/**
 	 * Classes implementing SimulatorInterface must implement getNames.
+	 * @return The names of the animals from the input file.
 	 */
 	String[] getNames();
 }

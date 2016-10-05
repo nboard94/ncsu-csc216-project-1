@@ -18,10 +18,10 @@ public abstract class Animal {
 	private char symbol;
 	/** Indicates whether the animal is dead or alive */
 	private boolean alive;
+	/** A seed for the randomGenerator*/
+	private static int seed = 500;
 	/** */
-	private static int seed;
-	/** */
-	private static Random randomGenerator;
+	private static Random randomGenerator = new Random(seed);
 	
 	/**
 	 * Constructor for an animal object
@@ -33,7 +33,7 @@ public abstract class Animal {
 	
 	//not yet implemented
 	public static void setRandomSeed(int seed) {
-		
+		randomGenerator = new Random(seed);
 	}
 	
 	/**
