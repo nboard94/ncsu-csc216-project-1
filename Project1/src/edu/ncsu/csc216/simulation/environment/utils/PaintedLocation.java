@@ -2,9 +2,8 @@ package edu.ncsu.csc216.simulation.environment.utils;
 
 import java.awt.Color;
 
-/**
+/**Identifies the location and paints the contents.
  * @author NBoar
- * Identifies the location and paints the contents.
  */
 public class PaintedLocation extends Location {
 
@@ -14,6 +13,7 @@ public class PaintedLocation extends Location {
 	private char symbol;
 	
 	/**
+	 * Constructor for a PaintedLocation.  Sets the row, column, color, and symbol.
 	 * @param r The row of the location to paint.
 	 * @param c The column of the location to paint.
 	 * @param t The color to paint the location.

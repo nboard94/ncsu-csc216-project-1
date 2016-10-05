@@ -4,9 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-/**
+/**Test class for the Location class.
  * @author NBoar
- * Test class for the Location class.
  */
 public class LocationTest {
 
@@ -20,6 +19,7 @@ public class LocationTest {
 		Location l = new Location(12,15);
 		
 		assertEquals(12, l.getRow());
+		
 		assertEquals(15, l.getCol());
 	}
 	

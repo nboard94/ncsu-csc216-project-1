@@ -6,9 +6,8 @@ import java.awt.Color;
 
 import org.junit.Test;
 
-/**
+/**Test class for the PaintedLocation class.
  * @author NBoar
- * Test class for the PaintedLocation class.
  */
 public class PaintedLocationTest {
 

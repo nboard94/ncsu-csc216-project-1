@@ -1,8 +1,7 @@
 package edu.ncsu.csc216.simulation.environment.utils;
 
-/**
+/**Class that represents a location object.
  * @author NBoar
- * Class that represents a location object.
  */
 public class Location {
 
