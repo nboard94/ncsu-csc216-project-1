@@ -1,8 +1,11 @@
 package edu.ncsu.csc216.simulation.simulator;
 
-import edu.ncsu.csc216.simulation.environment.EcoGrid;
 import edu.ncsu.csc216.simulation.environment.utils.PaintedLocation;
 
+/**The AutomataSimulator receives the input files.
+ * @author NBoar
+ *
+ */
 public class AutomataSimulator implements SimulatorInterface {
 
 	
@@ -15,24 +18,42 @@ public class AutomataSimulator implements SimulatorInterface {
 	private int numberOfNames;
 	private char[] symbol;
 	private static final char EMPTY = ' ';
-	public AutomataSimulator(String s) {
+	
+	
+	/**Constructor for the AutomataSimulator using default configurations.
+	 * @param file The name of the initial population file.
+	 */
+	public AutomataSimulator(String file) {
 		
 	}
 	
-	public AutomataSimulator(String s1, String s2) {
+	/**Constructor for the AutomataSimulator with read-in configurations.
+	 * @param file The name of the initial population file.
+	 * @param config The name of the configuration file.
+	 */
+	public AutomataSimulator(String file, String config) {
 		
 	}
 	
+	/* (non-Javadoc)
+	 * @see edu.ncsu.csc216.simulation.simulator.SimulatorInterface#step()
+	 */
 	@Override
 	public void step() {
 		
 	}
 	
+	/* (non-Javadoc)
+	 * @see edu.ncsu.csc216.simulation.simulator.SimulatorInterface#getView()
+	 */
 	@Override
 	public PaintedLocation[][] getView() {
 		return null;
 	}
 	
+	/* (non-Javadoc)
+	 * @see edu.ncsu.csc216.simulation.simulator.SimulatorInterface#getNames()
+	 */
 	@Override
 	public String[] getNames() {
 		return null;
