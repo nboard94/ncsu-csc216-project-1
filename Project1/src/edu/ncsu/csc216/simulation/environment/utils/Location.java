@@ -2,7 +2,7 @@ package edu.ncsu.csc216.simulation.environment.utils;
 
 /**
  * @author NBoar
- * Class that represents a location object
+ * Class that represents a location object.
  */
 public class Location {
 
@@ -22,6 +22,7 @@ public class Location {
 	}
 	
 	/**
+	 * Retrieves the row that the location is located.
 	 * @return row The row where the location is located.
 	 */
 	public int getRow() {
@@ -29,6 +30,7 @@ public class Location {
 	}
 	
 	/**
+	 * Retrieves the column that the location is located.
 	 * @return column The column where the location is located.
 	 */
 	public int getCol() {

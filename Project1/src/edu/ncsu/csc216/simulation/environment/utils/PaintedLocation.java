@@ -4,7 +4,7 @@ import java.awt.Color;
 
 /**
  * @author NBoar
- * Identifies the location and paints the contents
+ * Identifies the location and paints the contents.
  */
 public class PaintedLocation extends Location {
 
@@ -16,7 +16,7 @@ public class PaintedLocation extends Location {
 	/**
 	 * @param r The row of the location to paint.
 	 * @param c The column of the location to paint.
-	 * @param t the color to paint the location.
+	 * @param t The color to paint the location.
 	 * @param s The symbol to represent the location.
 	 */
 	public PaintedLocation(int r, int c, Color t, char s) {
@@ -26,6 +26,7 @@ public class PaintedLocation extends Location {
 	}
 	
 	/**
+	 * Retrieves the color that the  cell is painted.
 	 * @return tint The color the cell is painted.
 	 */
 	public Color getColor() {
@@ -33,6 +34,7 @@ public class PaintedLocation extends Location {
 	}
 
 	/**
+	 * Retrieves the symbol that represents the location.
 	 * @return symbol The symbol that represents the cell.
 	 */
 	public char getSymbol() {
