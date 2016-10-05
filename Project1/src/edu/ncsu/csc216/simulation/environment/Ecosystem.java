@@ -138,7 +138,7 @@ public class Ecosystem implements EcoGrid{
 		for (int i = 0; i < 20; i++) {
 			for (int j = 0; j < 20; j++) {
 				if (!map[i][j].isAlive()) {
-					this.remove(map[i][j]);
+					//this.remove(map[i][j]);
 				}
 			}
 		}
