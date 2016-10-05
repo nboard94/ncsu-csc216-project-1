@@ -28,11 +28,11 @@ public abstract class Animal {
 	 * @param c the symbol to represent this animal
 	 */
 	public Animal(char c) {
-		
+		symbol = c;
 	}
 	
 	//not yet implemented
-	public static void setRandomSeed(int s) {
+	public static void setRandomSeed(int seed) {
 		
 	}
 	

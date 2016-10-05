@@ -88,16 +88,28 @@ public class Configs {
 	}
 	
 //	CURRENTLY RETURNS ONLY THE DEFAULT VALUE
+	/**
+	 * retrieves prey's rank
+	 * @return DEFAULT_FOOD_CHAIN_RANK[0]
+	 */
 	public static int getPreyFoodChainRank() {
 		return DEFAULT_FOOD_CHAIN_RANK[0];
 	}
 	
 //	CURRENTLY RETURNS ONLY THE DEFAULT VALUE
+	/**
+	 * retrieves middle animal's rank
+	 * @return DEFAULT_FOOD_CHAIN_RANK[1]
+	 */
 	public static int getMiddleFoodChainRank() {
 		return DEFAULT_FOOD_CHAIN_RANK[1];
 	}
 	
 //	CURRENTLY RETURNS ONLY THE DEFAULT VALUE
+	/**
+	 * retrieves predator's rank
+	 * @return DEFAULT_FOOD_CHAIN_RANK[2[
+	 */
 	public static int getPredatorFoodChainRank() {
 		return DEFAULT_FOOD_CHAIN_RANK[2];
 	}

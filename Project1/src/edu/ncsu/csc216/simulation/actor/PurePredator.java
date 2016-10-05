@@ -13,7 +13,7 @@ public class PurePredator extends Animal{
 
 	@Override
 	public Color getColor() {
-		return null;
+		return Configs.getPreyColor();
 	}
 
 	@Override

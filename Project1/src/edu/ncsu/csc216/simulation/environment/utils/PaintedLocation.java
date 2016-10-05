@@ -2,21 +2,39 @@ package edu.ncsu.csc216.simulation.environment.utils;
 
 import java.awt.Color;
 
+/**
+ * @author NBoar
+ * Identifies the location and paints the contents
+ */
 public class PaintedLocation extends Location {
 
+	/** The color to paint the cell */
 	private Color tint;
+	/** The symbol for the location */
 	private char symbol;
 	
+	/**
+	 * @param r The row of the location to paint.
+	 * @param c The column of the location to paint.
+	 * @param t the color to paint the location.
+	 * @param s The symbol to represent the location.
+	 */
 	public PaintedLocation(int r, int c, Color t, char s) {
 		super(r, c);
 		this.tint = t;
 		this.symbol = s;
 	}
 	
+	/**
+	 * @return tint The color the cell is painted.
+	 */
 	public Color getColor() {
 		return tint;
 	}
 
+	/**
+	 * @return symbol The symbol that represents the cell.
+	 */
 	public char getSymbol() {
 		return symbol;
 	}

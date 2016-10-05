@@ -15,7 +15,7 @@ public class PurePrey extends Animal {
 
 	@Override
 	public Color getColor() {
-		return null;
+		return Configs.getPreyColor();
 	}
 
 	@Override
@@ -25,6 +25,9 @@ public class PurePrey extends Animal {
 
 	@Override
 	protected boolean pastBreedTime(int i) {
+		if (age > i) {
+			return true;
+		}
 		return false;
 	}
 

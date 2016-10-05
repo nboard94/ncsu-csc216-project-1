@@ -13,7 +13,7 @@ public class PredatorPrey extends Animal{
 
 	@Override
 	public Color getColor() {
-		return null;
+		return Configs.getMiddleColor();
 	}
 
 	@Override
