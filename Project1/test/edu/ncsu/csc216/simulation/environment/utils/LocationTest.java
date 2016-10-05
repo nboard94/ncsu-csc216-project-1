@@ -16,10 +16,9 @@ public class LocationTest {
 	 */
 	@Test
 	public void locationTest() {
-		Location l = new Location(12,15);
+		Location l = new Location(12, 15);
 		
 		assertEquals(12, l.getRow());
-		
 		assertEquals(15, l.getCol());
 	}
 	
