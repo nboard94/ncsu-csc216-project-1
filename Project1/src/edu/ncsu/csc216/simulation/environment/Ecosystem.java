@@ -38,17 +38,23 @@ public class Ecosystem implements EcoGrid{
 		return a;
 	}
 	
-	//nyi
+	/* (non-Javadoc)
+	 * @see edu.ncsu.csc216.simulation.environment.EcoGrid#remove(edu.ncsu.csc216.simulation.environment.utils.Location)
+	 */
 	public void remove(Location l) {
 		map[l.getRow()][l.getCol()] = null;
 	}
 	
-	//nyi
+	/* (non-Javadoc)
+	 * @see edu.ncsu.csc216.simulation.environment.EcoGrid#add(edu.ncsu.csc216.simulation.actor.Animal, edu.ncsu.csc216.simulation.environment.utils.Location)
+	 */
 	public void add(Animal a, Location l) {
 		map[l.getRow()][l.getCol()] = a;
 	}
 	
-	//nyi
+	/* (non-Javadoc)
+	 * @see edu.ncsu.csc216.simulation.environment.EcoGrid#findFirstEmptyNeighbor(edu.ncsu.csc216.simulation.environment.utils.Location, int)
+	 */
 	public Location findFirstEmptyNeighbor(Location l, int i) {
 		return null;
 	}
@@ -133,7 +139,9 @@ public class Ecosystem implements EcoGrid{
 		}
 	}
 	
-	//nyi
+	/* (non-Javadoc)
+	 * @see edu.ncsu.csc216.simulation.environment.EcoGrid#buryTheDead()
+	 */
 	public void buryTheDead() {
 		for (int i = 0; i < 20; i++) {
 			for (int j = 0; j < 20; j++) {
