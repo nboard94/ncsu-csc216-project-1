@@ -12,6 +12,17 @@ import org.junit.Test;
  */
 public class ConfigsTest {
 
+	@Test
+	public void Configs() {
+		Configs c = new Configs();
+		
+		//How to make this a better test?
+		assertSame(c, c);
+		assertEquals(0, Configs.getPreyFoodChainRank());
+		assertEquals(10, Configs.getMiddleFoodChainRank());
+		assertEquals(20, Configs.getPredatorFoodChainRank());
+	}
+	
 	/**
 	 * Tests initConfigs to make sure that configuration settings are properly set.
 	 * Also tests the getter methods for PLAYER_COLORS, STARVE_TIME, BREED_TIME.
@@ -31,7 +42,7 @@ public class ConfigsTest {
 		assertEquals(100, Configs.getPreyStarveTime());
 		assertEquals(200, Configs.getMiddleStarveTime());
 		assertEquals(300, Configs.getPredatorStarveTime());
-		
+
 		assertEquals(50, Configs.getPreyBreedTime());
 		assertEquals(100, Configs.getMiddleBreedTime());
 		assertEquals(150, Configs.getPredatorBreedTime());

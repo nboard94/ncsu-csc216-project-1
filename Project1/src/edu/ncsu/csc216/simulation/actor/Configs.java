@@ -43,9 +43,9 @@ public class Configs {
 		STARVE_TIME[0] = s[0];
 		STARVE_TIME[1] = s[1];
 		STARVE_TIME[2] = s[2];
-		BREED_TIME[0] = s[0];
-		BREED_TIME[1] = s[1];
-		BREED_TIME[2] = s[2];
+		BREED_TIME[0] = b[0];
+		BREED_TIME[1] = b[1];
+		BREED_TIME[2] = b[2];
 	}
 	
 	/**
