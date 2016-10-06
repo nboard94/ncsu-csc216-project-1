@@ -21,7 +21,7 @@ public abstract class Animal {
 	/** A seed for the randomGenerator*/
 	private static int seed = 500;
 	/** */
-	private static Random randomGenerator = new Random(seed);
+	private static Random randomGenerator = new Random();
 	
 	/**
 	 * Constructor for an animal object
@@ -31,9 +31,12 @@ public abstract class Animal {
 		symbol = c;
 	}
 	
-	//not yet implemented
+	/**
+	 * Sets a new seed for the randomGenerator.
+	 * @param seed The seed for the randomGenerator
+	 */
 	public static void setRandomSeed(int seed) {
-		randomGenerator = new Random(seed);
+		randomGenerator.setSeed(seed);
 	}
 	
 	/**

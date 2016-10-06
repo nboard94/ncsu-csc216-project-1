@@ -3,6 +3,7 @@ package edu.ncsu.csc216.simulation.simulator;
 import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.IllegalFormatException;
 import java.util.Scanner;
 
 import edu.ncsu.csc216.simulation.actor.Animal;
@@ -24,8 +25,8 @@ public class AutomataSimulator implements SimulatorInterface {
 	//PLACEHOLDER VALUES FOR THE FINALS.  WHAT ARE THE REAL ONES?
 	private static final int SIZE = 20;
 	private static final int THRESHOLD = 2;
-	private static final String SIZE_ERROR_MESSAGE = "";
-	private static final String THRESHOLD_ERROR_MESSAGE = "";
+	private static final String SIZE_ERROR_MESSAGE = "Invalid Grid Size";
+	private static final String THRESHOLD_ERROR_MESSAGE = "Invalid Number of Species";
 	private String[] names;
 	private int numberOfNames;
 	private char[] symbol;
@@ -36,67 +37,73 @@ public class AutomataSimulator implements SimulatorInterface {
 	/**Constructor for the AutomataSimulator using default configurations.
 	 * @param file The name of the initial population file.
 	 */
-	public AutomataSimulator(String file) {
-		File init = new File(file);
-		Location l;
-		Animal[] a = {};
-		char[] gridLine;
+	public AutomataSimulator(String filePath) {
+		File file = new File(filePath);
+		String line;
 		
 		try {
-			Scanner initScan = new Scanner(init);
-
+			Scanner fileScan = new Scanner(file);
+			
+			numberOfNames = fileScan.nextInt();
+			
+			if (numberOfNames < THRESHOLD) {
+				throw new IllegalArgumentException(THRESHOLD_ERROR_MESSAGE);
+			}
+			
 			for (int i = 0; i < numberOfNames; i++) {
-				symbol[i] = initScan.next().charAt(0);
-				names[i] = initScan.next();
-				
-				if (i == 0) {
-					a[i] = new PurePredator(symbol[i]);
-				}
-				else if (i > 0 && i < numberOfNames) {
-					a[i] = new PredatorPrey(symbol[i]);
-				}
-				else if (i == numberOfNames - 1) {
-					a[i] = new PurePrey(symbol[i]);
-				}
+				symbol[i] = fileScan.next().charAt(0);
+				names[i] = fileScan.next();
 			}
 			
 			for (int i = 0; i < SIZE; i++) {
-				gridLine = initScan.nextLine().toCharArray();
+				line = fileScan.nextLine();
 				
-				for (int j = 0; j < gridLine.length; j++) {
-					if (gridLine[j] == '.') {
-						l = new Location(i, j);
+				if (line.length() != SIZE) {
+					throw new IllegalArgumentException(SIZE_ERROR_MESSAGE);
+				}
+				
+				for (int j = 0; j < SIZE; j++) {
+					Animal a;
+					Location l = new Location(i,j);
+	
+					if (j == 0) {
+						a = new PurePredator(line.charAt(j));
+					}
+					else if (j == numberOfNames) {
+						a = new PurePrey(line.charAt(j));
 					}
 					else {
-						l = new PaintedLocation(i, j, Color.black, '.');
+						a = new PredatorPrey(line.charAt(j));
 					}
+					
+					simpleSystem.add(a, l);
 				}
+				
+				
 			}
-			
-			initScan.close();
-			
+				
 		} catch (FileNotFoundException e) {
-			
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
-		
-		
+		Configs.setToDefaults();
 	}
 	
 	/**Constructor for the AutomataSimulator with read-in configurations.
 	 * @param file The name of the initial population file.
 	 * @param config The name of the configuration file.
 	 */
-	public AutomataSimulator(String file, String configFile) {
-		this(file);
+	public AutomataSimulator(String filePath, String configFilePath) {
+		this(filePath);
 		
-		File conFile = new File(configFile);
+		File configFile = new File(configFilePath);
 		Color[] colorConfigs = {null, null, null};
 		int[] starveConfigs = new int[3];
 		int[] breedConfigs = new int[3];
 		
 		try {
-			Scanner configScan = new Scanner(conFile);
+			Scanner configScan = new Scanner(configFile);
 			
 			int intValue ;
 			intValue = Integer.parseInt(configScan.next(), 16);
