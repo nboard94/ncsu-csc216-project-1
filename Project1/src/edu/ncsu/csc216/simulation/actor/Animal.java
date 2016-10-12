@@ -258,6 +258,7 @@ public abstract class Animal {
 		timeSinceLastMeal++;
 		return false;
 	}
+	  
 	
 	/**
 	 * Retrieves the animal's color.
