@@ -130,26 +130,32 @@ public abstract class Animal {
 		babyLocation = e.dueWest(l);
 		if (e.isEmpty(babyLocation)) {
 			e.add(baby, babyLocation);
+			timeSinceLastBreed = 0;
 			return true;
 		}
 			
 		babyLocation = e.dueNorth(l);
 		if (e.isEmpty(babyLocation)) {
 			e.add(baby, babyLocation);
+			timeSinceLastBreed = 0;
 			return true;
 		}
 			
 		babyLocation = e.dueEast(l);
 		if (e.isEmpty(babyLocation)) {
 			e.add(baby, babyLocation);
+			timeSinceLastBreed = 0;
 			return true;
 		}
 			
 		babyLocation = e.dueSouth(l);
 		if (e.isEmpty(babyLocation)) {
 			e.add(baby, babyLocation);
+			timeSinceLastBreed = 0;
 			return true;
 		}
+		
+		timeSinceLastBreed++;
 		
 		return false;
 	}
@@ -212,24 +218,76 @@ public abstract class Animal {
 		}
 	}
 	
-	//NYI
+
 	protected boolean eat(Location l, EcoGrid e) {
 		Location preyLocation;
 		Animal prey;
 		
 		preyLocation = e.dueWest(l);
+		prey = e.getMap()[preyLocation.getRow()][preyLocation.getCol()];
+		if (prey.getFoodChainRank() < this.getFoodChainRank()) {
+			e.remove(preyLocation);
+			timeSinceLastMeal = 0;
+			return true;
+		}
 		
+		preyLocation = e.dueNorth(l);
+		prey = e.getMap()[preyLocation.getRow()][preyLocation.getCol()];
+		if (prey.getFoodChainRank() < this.getFoodChainRank()) {
+			e.remove(preyLocation);
+			timeSinceLastMeal = 0;
+			return true;
+		}
 		
+		preyLocation = e.dueEast(l);
+		prey = e.getMap()[preyLocation.getRow()][preyLocation.getCol()];
+		if (prey.getFoodChainRank() < this.getFoodChainRank()) {
+			e.remove(preyLocation);
+			timeSinceLastMeal = 0;
+			return true;
+		}
+		
+		preyLocation = e.dueSouth(l);
+		prey = e.getMap()[preyLocation.getRow()][preyLocation.getCol()];
+		if (prey.getFoodChainRank() < this.getFoodChainRank()) {
+			e.remove(preyLocation);
+			timeSinceLastMeal = 0;
+			return true;
+		}
+		
+		timeSinceLastMeal++;
 		return false;
 	}
 	
+	/**
+	 * Retrieves the animal's color.
+	 * @return Color The animal's color.
+	 */
 	public abstract Color getColor();
 	
+	/**
+	 * An animal acts according it the behavior of its type.
+	 * @param l The location of the animal that will act.
+	 * @param e The ecosystem containing the animal.
+	 */
 	public abstract void act(Location l, EcoGrid e);
 	
+	/**
+	 * Compares a given time to pastBreedTime.
+	 * @param i The amount of time to compare to pastBreedTime.
+	 * @return True if it is past breed time, false if it is not.
+	 */
 	protected abstract boolean pastBreedTime(int i);
 	
+	/**
+	 * Creates a wonderful little miracle from the parent's type.
+	 * @return Animal A new animal of the same type as the parent.
+	 */
 	protected abstract Animal makeNewBaby();
 	
+	/**
+	 * Retrieves the animals' food chain rank.
+	 * @return foodChainRank The rank of the animal in the food chain.
+	 */
 	protected abstract int getFoodChainRank();
 }
