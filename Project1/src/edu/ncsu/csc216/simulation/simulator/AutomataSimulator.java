@@ -89,12 +89,11 @@ public class AutomataSimulator implements SimulatorInterface {
 					}
 					
 					simpleSystem.add(a, l);
-				}
-				
-				fileScan.close();
-				
+				}	
 			}
 				
+			fileScan.close();
+			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -150,26 +149,33 @@ public class AutomataSimulator implements SimulatorInterface {
 		
 	}
 	
-	/* (non-Javadoc)
-	 * @see edu.ncsu.csc216.simulation.simulator.SimulatorInterface#step()
-	 */
 	@Override
 	public void step() {
 		Animal[][] creature = simpleSystem.getMap();
 		simpleSystem.enableTheLiving();
 	}
 	
-	/* (non-Javadoc)
-	 * @see edu.ncsu.csc216.simulation.simulator.SimulatorInterface#getView()
-	 */
 	@Override
 	public PaintedLocation[][] getView() {
-		return null;
+		Animal[][] map = simpleSystem.getMap();
+		Animal currentAnimal;
+		PaintedLocation[][] view = new PaintedLocation[SIZE][SIZE];
+		PaintedLocation currentLoc;
+		
+		for (int i = 0; i < SIZE; i++) {
+			
+			for (int j = 0; j < SIZE; j++) {
+				
+				currentAnimal = map[i][j];
+				currentLoc = new PaintedLocation(i, j, currentAnimal.getColor(), currentAnimal.getSymbol());
+				view[i][j] = currentLoc;
+				
+			}
+		}
+		
+		return view;
 	}
 	
-	/* (non-Javadoc)
-	 * @see edu.ncsu.csc216.simulation.simulator.SimulatorInterface#getNames()
-	 */
 	@Override
 	public String[] getNames() {
 		return names;

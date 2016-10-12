@@ -39,7 +39,7 @@ public class PurePrey extends Animal {
 
 	@Override
 	protected int getFoodChainRank() {
-		return 0;
+		return Configs.getPreyFoodChainRank();
 	}
 
 }

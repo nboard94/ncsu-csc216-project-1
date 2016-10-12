@@ -13,7 +13,7 @@ public class PurePredator extends Animal{
 
 	@Override
 	public Color getColor() {
-		return Configs.getPreyColor();
+		return Configs.getPredatorColor();
 	}
 
 	@Override
@@ -23,6 +23,10 @@ public class PurePredator extends Animal{
 
 	@Override
 	protected boolean pastBreedTime(int i) {
+		if (this.getTimeSinceLastBreed() > i) {
+			return true;
+		}
+		
 		return false;
 	}
 
@@ -34,7 +38,7 @@ public class PurePredator extends Animal{
 
 	@Override
 	protected int getFoodChainRank() {
-		return 0;
+		return Configs.getPredatorFoodChainRank();
 	}
 
 }

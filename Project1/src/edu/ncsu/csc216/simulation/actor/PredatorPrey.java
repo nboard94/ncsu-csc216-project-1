@@ -34,7 +34,7 @@ public class PredatorPrey extends Animal{
 
 	@Override
 	protected int getFoodChainRank() {
-		return 0;
+		return Configs.getMiddleFoodChainRank();
 	}
 
 }

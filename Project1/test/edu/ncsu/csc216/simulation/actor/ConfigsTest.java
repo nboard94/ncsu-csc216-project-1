@@ -16,6 +16,7 @@ public class ConfigsTest {
 	public void Configs() {
 		Configs c = new Configs();
 		
+		// TODO
 		//How to make this a better test?
 		assertSame(c, c);
 		assertEquals(0, Configs.getPreyFoodChainRank());

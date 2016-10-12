@@ -24,7 +24,7 @@ public class Configs {
 	private static int[] BREED_TIME = {0, 0, 0};
 	
 	/**
-	 * Constructor for a Configs object
+	 * Constructor for a Configurations object
 	 */
 	public Configs() {
 		
@@ -87,7 +87,6 @@ public class Configs {
 		return PLAYER_COLORS[2];
 	}
 	
-//	CURRENTLY RETURNS ONLY THE DEFAULT VALUE
 	/**
 	 * retrieves prey's rank
 	 * @return DEFAULT_FOOD_CHAIN_RANK[0]
@@ -96,7 +95,6 @@ public class Configs {
 		return DEFAULT_FOOD_CHAIN_RANK[0];
 	}
 	
-//	CURRENTLY RETURNS ONLY THE DEFAULT VALUE
 	/**
 	 * retrieves middle animal's rank
 	 * @return DEFAULT_FOOD_CHAIN_RANK[1]
@@ -105,7 +103,6 @@ public class Configs {
 		return DEFAULT_FOOD_CHAIN_RANK[1];
 	}
 	
-//	CURRENTLY RETURNS ONLY THE DEFAULT VALUE
 	/**
 	 * retrieves predator's rank
 	 * @return DEFAULT_FOOD_CHAIN_RANK[2[
