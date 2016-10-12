@@ -11,11 +11,12 @@ public class Ecosystem implements EcoGrid{
 
 	private int maxRows;
 	private int maxColumns;
-	Animal[][] map = new Animal[maxRows][maxColumns];
+	Animal[][] map;
 	
 	public Ecosystem(int r, int c) {
 		maxRows = r;
 		maxColumns = c;
+		map = new Animal[maxRows][maxColumns];
 	}
 	
 	/* (non-Javadoc)
@@ -52,7 +53,7 @@ public class Ecosystem implements EcoGrid{
 		map[l.getRow()][l.getCol()] = a;
 	}
 	
-	/* (non-Javadoc)
+	/* (non-Javadoc) 
 	 * @see edu.ncsu.csc216.simulation.environment.EcoGrid#findFirstEmptyNeighbor(edu.ncsu.csc216.simulation.environment.utils.Location, int)
 	 */
 	public Location findFirstEmptyNeighbor(Location l, int i) {

@@ -18,7 +18,7 @@ public class PurePredator extends Animal{
 
 	@Override
 	public void act(Location l, EcoGrid e) {
-		
+
 	}
 
 	@Override
@@ -28,7 +28,8 @@ public class PurePredator extends Animal{
 
 	@Override
 	protected Animal makeNewBaby() {
-		return null;
+		PurePredator baby = new PurePredator(this.getSymbol());
+		return baby;
 	}
 
 	@Override

@@ -28,7 +28,8 @@ public class PredatorPrey extends Animal{
 
 	@Override
 	protected Animal makeNewBaby() {
-		return null;
+		PredatorPrey baby = new PredatorPrey(this.getSymbol());
+		return baby;
 	}
 
 	@Override

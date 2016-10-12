@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.Random;
 
 import edu.ncsu.csc216.simulation.environment.EcoGrid;
+import edu.ncsu.csc216.simulation.environment.Ecosystem;
 import edu.ncsu.csc216.simulation.environment.utils.Location;
 
 public abstract class Animal {
@@ -20,7 +21,7 @@ public abstract class Animal {
 	private boolean alive;
 	/** A seed for the randomGenerator*/
 	private static int seed = 500;
-	/** */
+	/** A randomGenerator that produces a number 1-4 using seed to choose where the animal looks first*/
 	private static Random randomGenerator = new Random();
 	
 	/**
@@ -29,14 +30,15 @@ public abstract class Animal {
 	 */
 	public Animal(char c) {
 		symbol = c;
+		randomGenerator.setSeed(seed);
 	}
 	
 	/**
 	 * Sets a new seed for the randomGenerator.
 	 * @param seed The seed for the randomGenerator
 	 */
-	public static void setRandomSeed(int seed) {
-		randomGenerator.setSeed(seed);
+	public static void setRandomSeed(int newSeed) {
+		randomGenerator.setSeed(newSeed);
 	}
 	
 	/**
@@ -114,18 +116,110 @@ public abstract class Animal {
 		timeSinceLastBreed++;
 	}
 	
-	//NYI
+	/**
+	 * Parent animal looks for empty cells around it starting west and looking clockwise.
+	 * Pops an infant into the first empty cell.
+	 * @param l The location of the parent.
+	 * @param e The ecosystem to make babies in.
+	 * @return True if the animal has bred, false if it failed.
+	 */
 	protected boolean breed(Location l, EcoGrid e) {
+		Location babyLocation;
+		Animal baby = this.makeNewBaby();
+		
+		babyLocation = e.dueWest(l);
+		if (e.isEmpty(babyLocation)) {
+			e.add(baby, babyLocation);
+			return true;
+		}
+			
+		babyLocation = e.dueNorth(l);
+		if (e.isEmpty(babyLocation)) {
+			e.add(baby, babyLocation);
+			return true;
+		}
+			
+		babyLocation = e.dueEast(l);
+		if (e.isEmpty(babyLocation)) {
+			e.add(baby, babyLocation);
+			return true;
+		}
+			
+		babyLocation = e.dueSouth(l);
+		if (e.isEmpty(babyLocation)) {
+			e.add(baby, babyLocation);
+			return true;
+		}
+		
 		return false;
 	}
 	
-	//NYI
-	protected void move(Location l, EcoGrid e) {
+	/**
+	 * Animal scouts the locations around it starting randomly and looking clockwise and moves to the first empty one.
+	 * @param location The current location of the animal
+	 * @param e The Ecosystem to interact with
+	 */
+	protected void move(Location location, EcoGrid e) {
+		Location newLocation;
+		int lookDir = randomGenerator.nextInt((4));
+		int numDirectionsLooked = 0;
 		
+		
+		while (numDirectionsLooked < 4) {
+			if (lookDir == 0) {
+				newLocation = e.dueNorth(location);
+				
+				if (e.isEmpty(newLocation)) {
+					e.add(this, newLocation);
+					e.remove(location);
+				}
+				
+				numDirectionsLooked++;
+			}
+			
+			if (lookDir == 1) {
+				newLocation = e.dueEast(location);
+				
+				if (e.isEmpty(newLocation)) {
+					e.add(this, newLocation);
+					e.remove(location);
+				}
+				
+				numDirectionsLooked++;
+			}
+			
+			if (lookDir == 2) {
+				 newLocation = e.dueSouth(location);
+				 
+				if (e.isEmpty(newLocation)) {
+					e.add(this, newLocation);
+					e.remove(location);
+				 }
+				 
+				numDirectionsLooked++;
+			}
+			
+			if (lookDir == 3) {
+				newLocation = e.dueWest(location);
+				
+				if (e.isEmpty(newLocation)) {
+					e.add(this, newLocation);
+					e.remove(location);
+				}
+				
+				numDirectionsLooked++;
+			}
+		}
 	}
 	
 	//NYI
 	protected boolean eat(Location l, EcoGrid e) {
+		Location preyLocation;
+		Animal prey;
+		
+		preyLocation = e.dueWest(l);
+		
+		
 		return false;
 	}
 	

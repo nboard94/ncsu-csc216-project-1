@@ -33,7 +33,8 @@ public class PurePrey extends Animal {
 
 	@Override
 	protected Animal makeNewBaby() {
-		return null;
+		PurePrey baby = new PurePrey(this.getSymbol());
+		return baby;
 	}
 
 	@Override

@@ -12,6 +12,7 @@ import edu.ncsu.csc216.simulation.actor.PredatorPrey;
 import edu.ncsu.csc216.simulation.actor.PurePredator;
 import edu.ncsu.csc216.simulation.actor.PurePrey;
 import edu.ncsu.csc216.simulation.environment.EcoGrid;
+import edu.ncsu.csc216.simulation.environment.Ecosystem;
 import edu.ncsu.csc216.simulation.environment.utils.Location;
 import edu.ncsu.csc216.simulation.environment.utils.PaintedLocation;
 
@@ -38,27 +39,38 @@ public class AutomataSimulator implements SimulatorInterface {
 	 * @param file The name of the initial population file.
 	 */
 	public AutomataSimulator(String filePath) {
-		File file = new File(filePath);
+		//A string to hold any line in the file
 		String line;
+		//Ecosystem initialized to be SIZExSIZE big
+		simpleSystem = new Ecosystem(SIZE, SIZE);
 		
 		try {
-			Scanner fileScan = new Scanner(file);
+			//Scans the input file
+			Scanner fileScan = new Scanner(new File(filePath));
 			
+			//read in how many species there are
 			numberOfNames = fileScan.nextInt();
 			
+			//initializes symbols and names array to the appropriate length
+			symbol = new char[numberOfNames];
+			names = new String[numberOfNames];
+			
+			//check to make sure there are more then two species
 			if (numberOfNames < THRESHOLD) {
+				fileScan.close();
 				throw new IllegalArgumentException(THRESHOLD_ERROR_MESSAGE);
 			}
 			
 			for (int i = 0; i < numberOfNames; i++) {
 				symbol[i] = fileScan.next().charAt(0);
-				names[i] = fileScan.next();
+				names[i] = fileScan.nextLine();
 			}
 			
 			for (int i = 0; i < SIZE; i++) {
 				line = fileScan.nextLine();
 				
 				if (line.length() != SIZE) {
+					fileScan.close();
 					throw new IllegalArgumentException(SIZE_ERROR_MESSAGE);
 				}
 				
@@ -66,10 +78,10 @@ public class AutomataSimulator implements SimulatorInterface {
 					Animal a;
 					Location l = new Location(i,j);
 	
-					if (j == 0) {
+					if (line.charAt(j) == symbol[0]) {
 						a = new PurePredator(line.charAt(j));
 					}
-					else if (j == numberOfNames) {
+					else if (line.charAt(j) == symbol[numberOfNames - 1]) {
 						a = new PurePrey(line.charAt(j));
 					}
 					else {
@@ -79,6 +91,7 @@ public class AutomataSimulator implements SimulatorInterface {
 					simpleSystem.add(a, l);
 				}
 				
+				fileScan.close();
 				
 			}
 				
@@ -88,6 +101,8 @@ public class AutomataSimulator implements SimulatorInterface {
 		}
 		
 		Configs.setToDefaults();
+		
+		
 	}
 	
 	/**Constructor for the AutomataSimulator with read-in configurations.
