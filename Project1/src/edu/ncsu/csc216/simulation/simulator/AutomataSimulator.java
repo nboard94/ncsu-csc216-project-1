@@ -167,9 +167,15 @@ public class AutomataSimulator implements SimulatorInterface {
 			for (int j = 0; j < SIZE; j++) {
 				
 				currentAnimal = map[i][j];
-				currentLoc = new PaintedLocation(i, j, currentAnimal.getColor(), currentAnimal.getSymbol());
-				view[i][j] = currentLoc;
 				
+				if (currentAnimal.getSymbol() == '.') {
+					currentLoc = new PaintedLocation(i, j, Color.BLACK, ' ');
+					view[i][j] = currentLoc;
+				}
+				else {
+					currentLoc = new PaintedLocation(i, j, currentAnimal.getColor(), currentAnimal.getSymbol());
+					view[i][j] = currentLoc;
+				}
 			}
 		}
 		
