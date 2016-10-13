@@ -111,48 +111,69 @@ public class AutomataSimulator implements SimulatorInterface {
 	public AutomataSimulator(String filePath, String configFilePath) {
 		this(filePath);
 		
-		File configFile = new File(configFilePath);
-		Color[] colorConfigs = {null, null, null};
-		int[] starveConfigs = new int[3];
-		int[] breedConfigs = new int[3];
+		Color[] colorSet = new Color[3];
+		int[] starveTimeSet = new int[3];
+		int[] breedTimeSet = new int[3];
 		
 		try {
-			Scanner configScan = new Scanner(configFile);
+			Scanner configScan = new Scanner(new File(configFilePath));
 			
-			int intValue ;
-			intValue = Integer.parseInt(configScan.next(), 16);
-			colorConfigs[0] = new Color(intValue);
-			intValue = Integer.parseInt(configScan.next(), 16);
-			colorConfigs[1] = new Color(intValue);
-			intValue = Integer.parseInt(configScan.next(), 16);
-			colorConfigs[2] = new Color(intValue);
+			colorSet[0] = Color.decode(configScan.next());
+			colorSet[1] = Color.decode(configScan.next());
+			colorSet[2] = Color.decode(configScan.next());
 			
-			configScan.nextLine();
+			starveTimeSet[0] = configScan.nextInt();
+			starveTimeSet[1] = configScan.nextInt();
+			starveTimeSet[2] = configScan.nextInt();
 			
-			starveConfigs[0] = configScan.nextInt();
-			starveConfigs[1] = configScan.nextInt();
-			starveConfigs[2] = configScan.nextInt();
-			
-			configScan.nextInt();
-			
-			breedConfigs[0] = configScan.nextInt();
-			breedConfigs[1] = configScan.nextInt();
-			breedConfigs[2] = configScan.nextInt();
-			
+			breedTimeSet[0] = configScan.nextInt();
+			breedTimeSet[1] = configScan.nextInt();
+			breedTimeSet[2] = configScan.nextInt();
+
 			configScan.close();
 			
-			Configs.initConfigs(colorConfigs, starveConfigs, breedConfigs);
-			
-		} catch(FileNotFoundException e) {
-			
+		} catch (FileNotFoundException e) {
+
 		}
+		
+		Configs.initConfigs(colorSet, starveTimeSet, breedTimeSet);
 		
 	}
 	
 	@Override
 	public void step() {
 		Animal[][] creature = simpleSystem.getMap();
-		simpleSystem.enableTheLiving();
+		
+		//Traverse the grid and enable all living animals
+		for (int i = 0; i < SIZE; i++) {
+			
+			for (int j = 0; j < SIZE; j++) {
+				
+				if (creature[i][j].isAlive()) {
+					creature[i][j].enable();
+				}
+			}
+		}
+		
+		Location currentLoc;
+		//Traverse the grid second time
+		for (int i = 0; i < SIZE; i++) {
+			
+			for (int j = 0; j < SIZE; j++) {
+				
+				currentLoc = new Location(i, j);
+				if (simpleSystem.isEmpty(currentLoc)) {
+					//intentionally left empty
+					//empty spaces do nothing
+				}
+				
+				else {
+					creature[i][j].act(currentLoc, simpleSystem);
+				}
+			}
+		}
+		
+		
 	}
 	
 	@Override

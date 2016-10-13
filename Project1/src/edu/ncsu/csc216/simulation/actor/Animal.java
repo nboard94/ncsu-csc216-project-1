@@ -155,8 +155,6 @@ public abstract class Animal {
 			return true;
 		}
 		
-		timeSinceLastBreed++;
-		
 		return false;
 	}
 	

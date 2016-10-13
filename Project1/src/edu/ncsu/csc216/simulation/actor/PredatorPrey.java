@@ -18,7 +18,7 @@ public class PredatorPrey extends Animal{
 
 	@Override
 	public void act(Location l, EcoGrid e) {
-		
+	//	this.breed(l, e);
 	}
 
 	@Override

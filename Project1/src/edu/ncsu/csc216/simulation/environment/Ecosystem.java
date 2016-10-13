@@ -25,7 +25,7 @@ public class Ecosystem implements EcoGrid{
 	public boolean isEmpty(Location l) {
 		char symb = getItemAt(l).getSymbol();
 		
-		if (symb == '.') {
+		if (symb == ' ') {
 			return true;
 		}
 		return false;
