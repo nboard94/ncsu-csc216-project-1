@@ -150,7 +150,7 @@ public abstract class Animal {
 		Location newLocation = e.findFirstEmptyNeighbor(location, lookDir);
 		
 		if (newLocation == null) {
-			//Does not move
+			newLocation = location;
 		}
 		else {
 			e.add(this, newLocation);
