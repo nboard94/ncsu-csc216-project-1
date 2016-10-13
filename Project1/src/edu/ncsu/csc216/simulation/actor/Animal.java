@@ -34,6 +34,7 @@ public abstract class Animal {
 	 */
 	public Animal(char c) {
 		symbol = c;
+		alive = true;
 		randomGenerator.setSeed(seed);
 	}
 	
@@ -146,7 +147,7 @@ public abstract class Animal {
 	 * @param e The Ecosystem to interact with
 	 */
 	protected void move(Location location, EcoGrid e) {
-		int lookDir = randomGenerator.nextInt((4));
+		int lookDir = randomGenerator.nextInt(4);
 		Location newLocation = e.findFirstEmptyNeighbor(location, lookDir);
 		
 		if (newLocation == null) {

@@ -30,22 +30,24 @@ public class PurePrey extends Animal {
 
 	@Override
 	public void act(Location l, EcoGrid e) {
-		boolean wasAbleToBreed = false;
-		
-		if (this.pastBreedTime(Configs.getPreyBreedTime())) {
-			wasAbleToBreed = this.breed(l, e);
-
+		if (this.canAct()) {
+			boolean wasAbleToBreed = false;
+			
+			if (this.pastBreedTime(Configs.getPreyBreedTime())) {
+				wasAbleToBreed = this.breed(l, e);
+	
+			}
+			
+			if (!wasAbleToBreed) {
+				this.move(l, e);
+			}
+			
+			if (this.age > Configs.getPreyStarveTime()) {
+				this.die();
+			}
+			
+			this.disable();
 		}
-		
-		if (!wasAbleToBreed) {
-			this.move(l, e);
-		}
-		
-		if (this.age > Configs.getPreyStarveTime()) {
-			this.die();
-		}
-		
-		this.disable();
 	}
 
 	@Override

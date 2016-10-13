@@ -28,24 +28,26 @@ public class PurePredator extends Animal {
 	@Override
 	public void act(Location l, EcoGrid e) {
 		
-		boolean wasAbleToEat = false;
-		boolean wasAbleToBreed = false;
-		
-		wasAbleToEat = this.eat(l, e);
-		
-		if (!wasAbleToEat && this.pastBreedTime(Configs.getPredatorBreedTime())) {
-			wasAbleToBreed = this.breed(l, e);
+		if(this.canAct()) {
+			boolean wasAbleToEat = false;
+			boolean wasAbleToBreed = false;
+			
+			wasAbleToEat = this.eat(l, e);
+			
+			if (!wasAbleToEat && this.pastBreedTime(Configs.getPredatorBreedTime())) {
+				wasAbleToBreed = this.breed(l, e);
+			}
+			
+			if (!wasAbleToEat && !wasAbleToBreed) {
+				this.move(l, e);
+			}
+			
+			if (this.getTimeSinceLastMeal() > Configs.getPredatorStarveTime()) {
+				this.die();
+			}
+			
+			this.disable();
 		}
-		
-		if (!wasAbleToEat && !wasAbleToBreed) {
-			this.move(l, e);
-		}
-		
-		if (this.getTimeSinceLastMeal() > Configs.getPredatorStarveTime()) {
-			this.die();
-		}
-		
-		this.disable();
 	}
 
 	@Override
