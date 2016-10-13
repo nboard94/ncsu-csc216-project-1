@@ -128,95 +128,33 @@ public abstract class Animal {
 	 * @return True if the animal has bred, false if it failed.
 	 */
 	protected boolean breed(Location l, EcoGrid e) {
-		Location babyLocation;
+		Location babyLocation = e.findFirstEmptyNeighbor(l, 0);
 		Animal baby = this.makeNewBaby();
 		
-		babyLocation = e.dueWest(l);
-		if (e.isEmpty(babyLocation)) {
+		if (babyLocation == null) {
+			return false;
+		}
+		else {
 			e.add(baby, babyLocation);
-			timeSinceLastBreed = 0;
 			return true;
 		}
-			
-		babyLocation = e.dueNorth(l);
-		if (e.isEmpty(babyLocation)) {
-			e.add(baby, babyLocation);
-			timeSinceLastBreed = 0;
-			return true;
-		}
-			
-		babyLocation = e.dueEast(l);
-		if (e.isEmpty(babyLocation)) {
-			e.add(baby, babyLocation);
-			timeSinceLastBreed = 0;
-			return true;
-		}
-			
-		babyLocation = e.dueSouth(l);
-		if (e.isEmpty(babyLocation)) {
-			e.add(baby, babyLocation);
-			timeSinceLastBreed = 0;
-			return true;
-		}
-		
-		return false;
 	}
 	
 	/**
-	 * Animal scouts the locations around it starting randomly and looking clockwise and moves to the first empty one.
+	 * Animal scouts the locations around it and moves to the first empty one.
 	 * @param location The current location of the animal
 	 * @param e The Ecosystem to interact with
 	 */
 	protected void move(Location location, EcoGrid e) {
-		Location newLocation;
 		int lookDir = randomGenerator.nextInt((4));
-		int numDirectionsLooked = 0;
+		Location newLocation = e.findFirstEmptyNeighbor(location, lookDir);
 		
-		
-		while (numDirectionsLooked < 4) {
-			if (lookDir == 0) {
-				newLocation = e.dueNorth(location);
-				
-				if (e.isEmpty(newLocation)) {
-					e.add(this, newLocation);
-					e.remove(location);
-				}
-				
-				numDirectionsLooked++;
-			}
-			
-			if (lookDir == 1) {
-				newLocation = e.dueEast(location);
-				
-				if (e.isEmpty(newLocation)) {
-					e.add(this, newLocation);
-					e.remove(location);
-				}
-				
-				numDirectionsLooked++;
-			}
-			
-			if (lookDir == 2) {
-				 newLocation = e.dueSouth(location);
-				 
-				if (e.isEmpty(newLocation)) {
-					e.add(this, newLocation);
-					e.remove(location);
-				 }
-				 
-				numDirectionsLooked++;
-			}
-			
-			if (lookDir == 3) {
-				newLocation = e.dueWest(location);
-				
-				if (e.isEmpty(newLocation)) {
-					e.add(this, newLocation);
-					e.remove(location);
-				}
-				
-				numDirectionsLooked++;
-			}
+		if (newLocation == null) {
+			//Does not move
+		}
+		else {
+			e.add(this, newLocation);
+			e.remove(location);	
 		}
 	}
 	
@@ -228,42 +166,41 @@ public abstract class Animal {
 	 * @return True if the animal ate, false if it did not eat.
 	 */
 	protected boolean eat(Location l, EcoGrid e) {
-		Location preyLocation;
-		Animal prey;
 		
-		preyLocation = e.dueWest(l);
-		prey = e.getMap()[preyLocation.getRow()][preyLocation.getCol()];
-		if (prey.getFoodChainRank() < this.getFoodChainRank()) {
-			e.remove(preyLocation);
-			timeSinceLastMeal = 0;
+		Location eatSpot;
+		
+		eatSpot = e.dueWest(l);
+		if (e.getItemAt(eatSpot).getFoodChainRank() < this.getFoodChainRank()) {
+			e.remove(eatSpot);
+			e.add(this, eatSpot);
+			e.remove(l);
 			return true;
 		}
 		
-		preyLocation = e.dueNorth(l);
-		prey = e.getMap()[preyLocation.getRow()][preyLocation.getCol()];
-		if (prey.getFoodChainRank() < this.getFoodChainRank()) {
-			e.remove(preyLocation);
-			timeSinceLastMeal = 0;
+		eatSpot = e.dueNorth(l);
+		if (e.getItemAt(eatSpot).getFoodChainRank() < this.getFoodChainRank()) {
+			e.remove(eatSpot);
+			e.add(this, eatSpot);
+			e.remove(l);
 			return true;
 		}
 		
-		preyLocation = e.dueEast(l);
-		prey = e.getMap()[preyLocation.getRow()][preyLocation.getCol()];
-		if (prey.getFoodChainRank() < this.getFoodChainRank()) {
-			e.remove(preyLocation);
-			timeSinceLastMeal = 0;
+		eatSpot = e.dueEast(l);
+		if (e.getItemAt(eatSpot).getFoodChainRank() < this.getFoodChainRank()) {
+			e.remove(eatSpot);
+			e.add(this, eatSpot);
+			e.remove(l);
 			return true;
 		}
 		
-		preyLocation = e.dueSouth(l);
-		prey = e.getMap()[preyLocation.getRow()][preyLocation.getCol()];
-		if (prey.getFoodChainRank() < this.getFoodChainRank()) {
-			e.remove(preyLocation);
-			timeSinceLastMeal = 0;
+		eatSpot = e.dueSouth(l);
+		if (e.getItemAt(eatSpot).getFoodChainRank() < this.getFoodChainRank()) {
+			e.remove(eatSpot);
+			e.add(this, eatSpot);
+			e.remove(l);
 			return true;
 		}
 		
-		timeSinceLastMeal++;
 		return false;
 	}
 	  

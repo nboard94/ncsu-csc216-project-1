@@ -41,7 +41,7 @@ public class PurePrey extends Animal {
 		}
 		
 		if (!hasBred) {
-			this.move(l, e);
+		//	this.move(l, e);
 		}
 		
 		if (this.getTimeSinceLastMeal() >= Configs.getPreyStarveTime()) {
