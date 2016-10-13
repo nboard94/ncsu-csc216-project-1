@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.util.Random;
 
 import edu.ncsu.csc216.simulation.environment.EcoGrid;
-import edu.ncsu.csc216.simulation.environment.Ecosystem;
 import edu.ncsu.csc216.simulation.environment.utils.Location;
 
 public abstract class Animal {
@@ -35,7 +34,7 @@ public abstract class Animal {
 	
 	/**
 	 * Sets a new seed for the randomGenerator.
-	 * @param seed The seed for the randomGenerator
+	 * @param newSeed The seed for the randomGenerator.
 	 */
 	public static void setRandomSeed(int newSeed) {
 		randomGenerator.setSeed(newSeed);
@@ -217,6 +216,12 @@ public abstract class Animal {
 	}
 	
 
+	/**
+	 * Eating behavior.  Animal looks around it for prey and eats if the rank is lower.
+	 * @param l The animal's location.
+	 * @param e Ecosystem that the animal is in.
+	 * @return True if the animal ate, false if it did not eat.
+	 */
 	protected boolean eat(Location l, EcoGrid e) {
 		Location preyLocation;
 		Animal prey;

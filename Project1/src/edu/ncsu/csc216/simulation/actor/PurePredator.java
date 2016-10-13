@@ -5,8 +5,17 @@ import java.awt.Color;
 import edu.ncsu.csc216.simulation.environment.EcoGrid;
 import edu.ncsu.csc216.simulation.environment.utils.Location;
 
-public class PurePredator extends Animal{
+/**
+ * Class for an animal at the top of the food chain.  
+ * Contains behavioral information specific to this animal type.
+ * @author NBoar
+ */
+public class PurePredator extends Animal {
 
+	/**
+	 * Constructor a predator.  Calls the super constructor in Animal.
+	 * @param c The character representing this animal's symbol.
+	 */
 	public PurePredator(char c) {
 		super(c);
 	}

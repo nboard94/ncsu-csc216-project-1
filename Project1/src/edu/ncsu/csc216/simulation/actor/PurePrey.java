@@ -5,10 +5,20 @@ import java.awt.Color;
 import edu.ncsu.csc216.simulation.environment.EcoGrid;
 import edu.ncsu.csc216.simulation.environment.utils.Location;
 
+/**
+ * Class for an animal at the bottom of the food chain.  
+ * Contains behavioral information specific to this animal type.
+ * @author NBoar
+ */
 public class PurePrey extends Animal {
 
+	/** Represents the animal's age.*/
 	private int age = 0;
 	
+	/**
+	 * Constructor a prey.  Calls the super constructor in Animal.
+	 * @param c The character representing this animal's symbol.
+	 */
 	public PurePrey(char c) {
 		super(c);
 	}

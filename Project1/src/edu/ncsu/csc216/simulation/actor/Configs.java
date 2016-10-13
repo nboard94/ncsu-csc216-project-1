@@ -3,8 +3,9 @@ package edu.ncsu.csc216.simulation.actor;
 import java.awt.Color;
 
 /**
+ * The configs class sets and contains information relating to animals.
+ * Including colors for each animal type, starve times, breed times, etc.
  * @author NBoard
- *
  */
 public class Configs {
 
@@ -13,15 +14,15 @@ public class Configs {
 	/** Default color values for animals on the food chain, from lowest to highest */
 	private static final Color[] DEFAULT_COLORS = {Color.green, Color.orange, Color.red};
 	/** The set values for animals on the food chain, from lowest to highest */
-	private static Color[] PLAYER_COLORS = {null, null, null};
+	private static Color[] PLAYER_COLORS = new Color[3];
 	/** Default values for turns it takes to starve for animals on the food chain, from lowest to highest */
 	private static final int[] DEFAULT_STARVE_TIME = {10, 6, 5};
 	/** The set values for turns it takes to starve for animals on the food chain, from lowest to highest*/
-	private static int[] STARVE_TIME = {0, 0, 0};
+	private static int[] STARVE_TIME = new int[3];
 	/** Default values for turns it takes to breed for animals on the food chain, from lowest to highest */
 	private static final int[] DEFAULT_BREED_TIME = {1, 7, 15};
 	/** The set values for turns it takes to breed for animals on the food chain, from lowest to highest*/
-	private static int[] BREED_TIME = {0, 0, 0};
+	private static int[] BREED_TIME = new int[3];
 	
 	/**
 	 * Constructor for a Configurations object

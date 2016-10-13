@@ -5,8 +5,17 @@ import java.awt.Color;
 import edu.ncsu.csc216.simulation.environment.EcoGrid;
 import edu.ncsu.csc216.simulation.environment.utils.Location;
 
-public class PredatorPrey extends Animal{
+/**
+ * Class for an animal in the middle of the food chain.  Not the top predator or
+ * the bottom prey.  Contains behavioral information specific to this animal type.
+ * @author NBoar
+ */
+public class PredatorPrey extends Animal {
 
+	/**
+	 * Constructor for a middle animal.  Calls the super constructor in Animal.
+	 * @param c The character representing this animal's symbol.
+	 */
 	public PredatorPrey(char c) {
 		super(c);
 	}
