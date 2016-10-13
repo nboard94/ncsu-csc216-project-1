@@ -6,6 +6,11 @@ import java.util.Random;
 import edu.ncsu.csc216.simulation.environment.EcoGrid;
 import edu.ncsu.csc216.simulation.environment.utils.Location;
 
+/**
+ * Abstract class that contains behavior for all the types of animals.
+ * PurePredator, PurePrey, and PredatorPrey extend Animal.
+ * @author NBoar
+ */
 public abstract class Animal {
 
 	/** Steps that have passed since the animal's last meal */

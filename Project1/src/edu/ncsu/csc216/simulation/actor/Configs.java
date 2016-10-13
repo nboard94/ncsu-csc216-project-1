@@ -14,15 +14,15 @@ public class Configs {
 	/** Default color values for animals on the food chain, from lowest to highest */
 	private static final Color[] DEFAULT_COLORS = {Color.green, Color.orange, Color.red};
 	/** The set values for animals on the food chain, from lowest to highest */
-	private static Color[] PLAYER_COLORS = new Color[3];
+	private static Color[] PLAYER_COLORS;
 	/** Default values for turns it takes to starve for animals on the food chain, from lowest to highest */
 	private static final int[] DEFAULT_STARVE_TIME = {10, 6, 5};
 	/** The set values for turns it takes to starve for animals on the food chain, from lowest to highest*/
-	private static int[] STARVE_TIME = new int[3];
+	private static int[] STARVE_TIME;
 	/** Default values for turns it takes to breed for animals on the food chain, from lowest to highest */
 	private static final int[] DEFAULT_BREED_TIME = {1, 7, 15};
 	/** The set values for turns it takes to breed for animals on the food chain, from lowest to highest*/
-	private static int[] BREED_TIME = new int[3];
+	private static int[] BREED_TIME;
 	
 	/**
 	 * Constructor for a Configurations object
