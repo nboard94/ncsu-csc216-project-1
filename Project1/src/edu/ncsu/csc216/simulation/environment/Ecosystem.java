@@ -30,8 +30,10 @@ public class Ecosystem implements EcoGrid {
 		map = new Animal[maxRows][maxColumns];
 	}
 	
-	/* (non-Javadoc)
-	 * @see edu.ncsu.csc216.simulation.environment.EcoGrid#isEmpty(edu.ncsu.csc216.simulation.environment.utils.Location)
+	/**
+	 * Is the grid cell empty?
+	 * @param l location of the cell on the grid
+	 * @return true if there is no item in that cell.
 	 */
 	public boolean isEmpty(Location l) {
 		
@@ -49,30 +51,40 @@ public class Ecosystem implements EcoGrid {
 //		return false;
 	}
 	
-	/* (non-Javadoc)
-	 * @see edu.ncsu.csc216.simulation.environment.EcoGrid#getItemAt(edu.ncsu.csc216.simulation.environment.utils.Location)
+	/**
+	 * What is the Animal at a particular grid cell?
+	 * @param l location of the cell on the grid
+	 * @return the Animal at the given cell or null if the cell is empty
 	 */
 	public Animal getItemAt(Location l) {
 		Animal a = map[l.getRow()][l.getCol()];
 		return a;
 	}
 	
-	/* (non-Javadoc)
-	 * @see edu.ncsu.csc216.simulation.environment.EcoGrid#remove(edu.ncsu.csc216.simulation.environment.utils.Location)
+	/**
+	 * Make a particular grid cell empty.
+	 * @param l location of the cell on the grid
 	 */
 	public void remove(Location l) {
 		map[l.getRow()][l.getCol()] = null;
 	}
 	
-	/* (non-Javadoc)
-	 * @see edu.ncsu.csc216.simulation.environment.EcoGrid#add(edu.ncsu.csc216.simulation.actor.Animal, edu.ncsu.csc216.simulation.environment.utils.Location)
+	/**
+	 * Add an Animal to a particular grid cell.
+	 * @param a Item to add
+	 * @param l location of the cell on the grid
 	 */
 	public void add(Animal a, Location l) {
 		map[l.getRow()][l.getCol()] = a;
 	}
 	
-	/* (non-Javadoc)
-	 * @see edu.ncsu.csc216.simulation.environment.EcoGrid#findFirstEmptyNeighbor(edu.ncsu.csc216.simulation.environment.utils.Location, int)
+	/**
+	 * Find the first cell in the grid that shares a border with the cell at
+	 * the given position and that contains no Animal. Start looking in the
+	 * given direction and continue clockwise around the cell.
+	 * @param l The position to add the animal in.
+	 * @param i Direction to start: 0 = west, 1 = north, 2 = east, 3 = south.
+	 * @return the location for the first empty neighbor found, or null if none are found.
 	 */
 	public Location findFirstEmptyNeighbor(Location l, int i) {
 		Location emptyLoc;
@@ -123,8 +135,10 @@ public class Ecosystem implements EcoGrid {
 		return null;
 	}
 	
-	/* (non-Javadoc)
-	 * @see edu.ncsu.csc216.simulation.environment.EcoGrid#dueNorth(edu.ncsu.csc216.simulation.environment.utils.Location)
+	/**
+	 * What cell is due north of the given cell?
+	 * @param l The given cell
+	 * @return The cell due north
 	 */
 	public Location dueNorth(Location l) {
 		int currentRow = l.getRow();
@@ -138,8 +152,10 @@ public class Ecosystem implements EcoGrid {
 		return northCell;
 	}
 	
-	/* (non-Javadoc)
-	 * @see edu.ncsu.csc216.simulation.environment.EcoGrid#dueSouth(edu.ncsu.csc216.simulation.environment.utils.Location)
+	/**
+	 * What cell is due south of the given cell?
+	 * @param l The given cell
+	 * @return The cell due south
 	 */
 	public Location dueSouth(Location l) {
 		int currentRow = l.getRow();
@@ -153,8 +169,10 @@ public class Ecosystem implements EcoGrid {
 		return southCell;
 	}
 	
-	/* (non-Javadoc)
-	 * @see edu.ncsu.csc216.simulation.environment.EcoGrid#dueEast(edu.ncsu.csc216.simulation.environment.utils.Location)
+	/**
+	 * What cell is due east of the given cell?
+	 * @param l The given cell
+	 * @return The cell due east
 	 */
 	public Location dueEast(Location l) {
 		int currentCol = l.getCol();
@@ -168,8 +186,10 @@ public class Ecosystem implements EcoGrid {
 		return eastCell;
 	}
 	
-	/* (non-Javadoc)
-	 * @see edu.ncsu.csc216.simulation.environment.EcoGrid#dueWest(edu.ncsu.csc216.simulation.environment.utils.Location)
+	/**
+	 * What cell is due west of the given cell?
+	 * @param l The given cell
+	 * @return The cell due west
 	 */
 	public Location dueWest(Location l) {
 		int currentCol = l.getCol();
@@ -183,15 +203,17 @@ public class Ecosystem implements EcoGrid {
 		return westCell;
 	}
 	
-	/* (non-Javadoc)
-	 * @see edu.ncsu.csc216.simulation.environment.EcoGrid#getMap()
+	/**
+	 * What is in the grid?
+	 * @return a snapshot of the grid, showing
+	 *   the contents of each grid cell.
 	 */
 	public Animal[][] getMap() {
 		return map;
 	}
 	
-	/* (non-Javadoc)
-	 * @see edu.ncsu.csc216.simulation.environment.EcoGrid#enableTheLiving()
+	/**
+	 * Enable all live animals in the grid.
 	 */
 	public void enableTheLiving() {
 		for (int i = 0; i < 20; i++) {
@@ -203,8 +225,8 @@ public class Ecosystem implements EcoGrid {
 		}
 	}
 	
-	/* (non-Javadoc)
-	 * @see edu.ncsu.csc216.simulation.environment.EcoGrid#buryTheDead()
+	/**
+	 * Remove all dead animals from the grid.
 	 */
 	public void buryTheDead() {
 		Location currentLoc;

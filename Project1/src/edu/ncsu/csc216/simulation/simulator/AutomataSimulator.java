@@ -76,7 +76,7 @@ public class AutomataSimulator implements SimulatorInterface {
 				for (int j = 0; j < SIZE; j++) {
 					Animal a;
 					
-					Location l = new Location(i,j);
+					Location l = new Location(i, j);
 
 					if (line.charAt(j) == symbol[0]) {
 						a = new PurePredator(line.charAt(j));

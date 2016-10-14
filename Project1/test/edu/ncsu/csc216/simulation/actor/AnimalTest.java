@@ -10,6 +10,10 @@ import edu.ncsu.csc216.simulation.environment.EcoGrid;
 import edu.ncsu.csc216.simulation.environment.Ecosystem;
 import edu.ncsu.csc216.simulation.environment.utils.Location;
 
+/**
+ * Class that validates the behavior of the abstract class Animal.
+ * @author NBoar
+ */
 public class AnimalTest {
 	
 	/**
