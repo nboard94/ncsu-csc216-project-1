@@ -47,6 +47,14 @@ public class PredatorPrey extends Animal {
 				this.die();
 			}
 			
+			if (!wasAbleToEat) {
+				this.incrementTimeSinceLastMeal();
+			}
+			
+			if (!wasAbleToBreed) {
+				this.incrementTimeSinceLastBreed();
+			}
+			
 			this.disable();
 		}
 	}

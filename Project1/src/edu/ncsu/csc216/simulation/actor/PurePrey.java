@@ -46,6 +46,10 @@ public class PurePrey extends Animal {
 				this.die();
 			}
 			
+			if (!wasAbleToBreed) {
+				this.incrementTimeSinceLastBreed();
+			}
+			
 			this.disable();
 		}
 	}
