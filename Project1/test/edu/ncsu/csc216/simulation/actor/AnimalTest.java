@@ -9,11 +9,15 @@ import org.junit.Test;
 import edu.ncsu.csc216.simulation.environment.EcoGrid;
 import edu.ncsu.csc216.simulation.environment.Ecosystem;
 import edu.ncsu.csc216.simulation.environment.utils.Location;
+import edu.ncsu.csc216.simulation.simulator.AutomataSimulator;
 
 public class AnimalTest {
 	
 	@Test
 	public void animalTest() {
+		Configs.setToDefaults();
+		
+		
 		Animal p1 = new PurePrey('x');
 		assertEquals('x', p1.getSymbol());
 		assertEquals(Color.GREEN, p1.getColor());
@@ -128,6 +132,20 @@ public class AnimalTest {
 		
 		Animal p1 = new PurePrey('x');
 		p1.breed(oldLoc, e);
+		
+	}
+	
+	@Test
+	public void testEat() {
+		AutomataSimulator as = new AutomataSimulator("test-files/testFile");
+		EcoGrid e = new Ecosystem(20, 20);
+		Location eatSpot;
+		
+		//test for west food
+		eatSpot = new Location(1, 3);
+		e.getItemAt(eatSpot).eat(eatSpot, e);
+		assertEquals(null, e.getItemAt(eatSpot));
+		assertEquals('O', e.getItemAt(new Location(1, 2)).getSymbol());
 		
 	}
 }
