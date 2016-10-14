@@ -6,6 +6,10 @@ import java.awt.Color;
 
 import org.junit.Test;
 
+import edu.ncsu.csc216.simulation.environment.EcoGrid;
+import edu.ncsu.csc216.simulation.environment.Ecosystem;
+import edu.ncsu.csc216.simulation.environment.utils.Location;
+
 /**
  * Tests the PurePrey class that extends Animal.
  * @author NBoar
@@ -58,5 +62,25 @@ public class PurePreyTest {
 	public void getFoodChainRankTest() {
 		PurePrey p = new PurePrey('x');
 		assertEquals(0, p.getFoodChainRank());
+	}
+	
+	/**
+	 * Validates that act works.
+	 */
+	@Test
+	public void actTest() {
+		EcoGrid e = new Ecosystem(2, 2);
+		Location r0c0 = new Location(0, 0);
+		Location r0c1 = new Location(0, 1);
+		Location r1c0 = new Location(1, 0);
+		Location r1c1 = new Location(1, 1);
+		Animal p = new PurePrey('x');
+		
+		e.add(p, r0c0);
+		e.add(p, r0c1);
+		
+		p.enable();
+		
+		p.act(r0c0, e);
 	}
 }
