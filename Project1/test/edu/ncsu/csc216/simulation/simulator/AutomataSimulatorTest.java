@@ -2,33 +2,50 @@ package edu.ncsu.csc216.simulation.simulator;
 
 import static org.junit.Assert.*;
 
+import java.awt.Color;
+import java.nio.file.NoSuchFileException;
+
 import org.junit.Test;
+
+import edu.ncsu.csc216.simulation.actor.Configs;
 
 /**Tests the AutomataSimulator class
  * @author NBoar
  *
  */
 public class AutomataSimulatorTest {
-
+	
+		private static final String TEST_FILE = "test-files/testFile";
+		private static final String CONFIG_TEST_FILE = "test-files/configFile";
+		
 	@Test
 	public void automataSimulatorTest() {
+		AutomataSimulator as = new AutomataSimulator(TEST_FILE);
+		assertEquals(4, as.getNames().length);
+		assertEquals("O: Great Gray Owl", as.getNames()[0]);
+		assertEquals("M: Mouse", as.getNames()[1]);
+		assertEquals("F: Frog", as.getNames()[2]);
+		assertEquals("I: Insect", as.getNames()[3]);
+	}
 
-		try {
-			AutomataSimulator as = new AutomataSimulator("/Project1/test-files/testFile");
-			assertEquals(4, as.getNames().length);
-		} catch (IllegalArgumentException e) {
-			fail();
-		}
+	@Test
+	public void automataSimulatorConfigsTest() {
+		AutomataSimulator as = new AutomataSimulator(TEST_FILE, CONFIG_TEST_FILE);
+		assertEquals(4, as.getNames().length);
+		assertEquals("O: Great Gray Owl", as.getNames()[0]);
+		assertEquals("M: Mouse", as.getNames()[1]);
+		assertEquals("F: Frog", as.getNames()[2]);
+		assertEquals("I: Insect", as.getNames()[3]);
 	}
 	
 	@Test
-	public void automataSimulatorConfigTest() {
-
-		try {
-			AutomataSimulator as = new AutomataSimulator("/Project1/test-files/testFile", "/Project1/test-files/configTest");
-			assertEquals(4, as.getNames().length);
-		} catch (IllegalArgumentException e) {
-			fail();
-		}
+	public void stepTest() {
+		 
+	}
+	
+	@Test
+	public void getView() {
+		AutomataSimulator as = new AutomataSimulator(TEST_FILE);
+		
 	}
 }

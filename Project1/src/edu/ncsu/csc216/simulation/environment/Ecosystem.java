@@ -31,12 +31,19 @@ public class Ecosystem implements EcoGrid{
 	}
 	
 	public boolean isEmpty(Location l) {
-		char symb = getItemAt(l).getSymbol();
 		
-		if (symb == '.') {
+		if (this.getItemAt(l) == null) {
 			return true;
 		}
+		
 		return false;
+		
+//		char symb = getItemAt(l).getSymbol();
+//		
+//		if (symb == '.') {
+//			return true;
+//		}
+//		return false;
 	}
 	
 	public Animal getItemAt(Location l) {

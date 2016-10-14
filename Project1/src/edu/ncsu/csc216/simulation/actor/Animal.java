@@ -3,6 +3,8 @@ package edu.ncsu.csc216.simulation.actor;
 import java.awt.Color;
 import java.util.Random;
 
+import javax.swing.tree.DefaultTreeCellEditor.EditorContainer;
+
 import edu.ncsu.csc216.simulation.environment.EcoGrid;
 import edu.ncsu.csc216.simulation.environment.utils.Location;
 
@@ -14,9 +16,9 @@ import edu.ncsu.csc216.simulation.environment.utils.Location;
 public abstract class Animal {
 
 	/** Steps that have passed since the animal's last meal */
-	private int timeSinceLastMeal;
+	private int timeSinceLastMeal = 0;
 	/** Steps that have passed since the animal bred */
-	private int timeSinceLastBreed;
+	private int timeSinceLastBreed = 0;
 	/** Indicates whether or not an animal is disabled for the coming step */
 	private boolean canActThisStep;
 	/** Symbol that represents the animal */
@@ -132,6 +134,7 @@ public abstract class Animal {
 		Location babyLocation = e.findFirstEmptyNeighbor(l, 0);
 		Animal baby = this.makeNewBaby();
 		
+		
 		if (babyLocation == null) {
 			return false;
 		}
@@ -171,7 +174,7 @@ public abstract class Animal {
 		Location eatSpot;
 		
 		eatSpot = e.dueWest(l);
-		if (e.getItemAt(eatSpot).getFoodChainRank() < this.getFoodChainRank()) {
+		if (!e.isEmpty(eatSpot) && e.getItemAt(eatSpot).getFoodChainRank() < this.getFoodChainRank()) {
 			e.remove(eatSpot);
 			e.add(this, eatSpot);
 			e.remove(l);
@@ -179,7 +182,7 @@ public abstract class Animal {
 		}
 		
 		eatSpot = e.dueNorth(l);
-		if (e.getItemAt(eatSpot).getFoodChainRank() < this.getFoodChainRank()) {
+		if (!e.isEmpty(eatSpot) && e.getItemAt(eatSpot).getFoodChainRank() < this.getFoodChainRank()) {
 			e.remove(eatSpot);
 			e.add(this, eatSpot);
 			e.remove(l);
@@ -187,7 +190,7 @@ public abstract class Animal {
 		}
 		
 		eatSpot = e.dueEast(l);
-		if (e.getItemAt(eatSpot).getFoodChainRank() < this.getFoodChainRank()) {
+		if (!e.isEmpty(eatSpot) && e.getItemAt(eatSpot).getFoodChainRank() < this.getFoodChainRank()) {
 			e.remove(eatSpot);
 			e.add(this, eatSpot);
 			e.remove(l);
@@ -195,7 +198,7 @@ public abstract class Animal {
 		}
 		
 		eatSpot = e.dueSouth(l);
-		if (e.getItemAt(eatSpot).getFoodChainRank() < this.getFoodChainRank()) {
+		if (!e.isEmpty(eatSpot) && e.getItemAt(eatSpot).getFoodChainRank() < this.getFoodChainRank()) {
 			e.remove(eatSpot);
 			e.add(this, eatSpot);
 			e.remove(l);

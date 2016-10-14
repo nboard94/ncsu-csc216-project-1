@@ -3,6 +3,7 @@ package edu.ncsu.csc216.simulation.simulator;
 import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.nio.file.NoSuchFileException;
 import java.util.IllegalFormatException;
 import java.util.Scanner;
 
@@ -63,7 +64,7 @@ public class AutomataSimulator implements SimulatorInterface {
 			
 			for (int i = 0; i < numberOfNames; i++) {
 				symbol[i] = fileScan.next().charAt(0);
-				names[i] = fileScan.nextLine();
+				names[i] = symbol[i] + ": " + fileScan.nextLine().trim();
 			}
 			
 			for (int i = 0; i < SIZE; i++) {
@@ -81,12 +82,16 @@ public class AutomataSimulator implements SimulatorInterface {
 					if (line.charAt(j) == symbol[0]) {
 						a = new PurePredator(line.charAt(j));
 					}
+					else if (line.charAt(j) == '.') {
+						a = null;
+					}
 					else if (line.charAt(j) == symbol[numberOfNames - 1]) {
 						a = new PurePrey(line.charAt(j));
 					}
 					else {
 						a = new PredatorPrey(line.charAt(j));
 					}
+					
 					
 					simpleSystem.add(a, l);
 				}	
@@ -149,7 +154,7 @@ public class AutomataSimulator implements SimulatorInterface {
 			
 			for (int j = 0; j < SIZE; j++) {
 				
-				if (creature[i][j].isAlive()) {
+				if (creature[i][j] != null && creature[i][j].isAlive()) {
 					creature[i][j].enable();
 				}
 			}
@@ -179,7 +184,7 @@ public class AutomataSimulator implements SimulatorInterface {
 			for (int j = 0; j < SIZE; j++) {
 				
 				currentLoc = new Location(i, j);
-				if (!creature[i][j].isAlive()) {
+				if (!simpleSystem.isEmpty(currentLoc) && !creature[i][j].isAlive()) {
 					simpleSystem.remove(currentLoc);
 				}
 			}
@@ -193,21 +198,23 @@ public class AutomataSimulator implements SimulatorInterface {
 		Animal[][] map = simpleSystem.getMap();
 		Animal currentAnimal;
 		PaintedLocation[][] view = new PaintedLocation[SIZE][SIZE];
-		PaintedLocation currentLoc;
+		PaintedLocation currentLocToPaint;
+		Location currentLoc;
 		
 		for (int i = 0; i < SIZE; i++) {
 			
 			for (int j = 0; j < SIZE; j++) {
 				
+				currentLoc = new Location(i, j);
 				currentAnimal = map[i][j];
 				
-				if (currentAnimal.getSymbol() == '.') {
-					currentLoc = new PaintedLocation(i, j, Color.BLACK, ' ');
-					view[i][j] = currentLoc;
+				if (currentAnimal == null) {
+					currentLocToPaint = new PaintedLocation(i, j, Color.BLACK, EMPTY);
+					view[i][j] = currentLocToPaint;
 				}
-				else {
-					currentLoc = new PaintedLocation(i, j, currentAnimal.getColor(), currentAnimal.getSymbol());
-					view[i][j] = currentLoc;
+				else if (currentAnimal != null && currentAnimal.getSymbol() != '.'){
+					currentLocToPaint = new PaintedLocation(i, j, currentAnimal.getColor(), currentAnimal.getSymbol());
+					view[i][j] = currentLocToPaint;
 				}
 			}
 		}
