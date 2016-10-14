@@ -6,9 +6,15 @@ import java.awt.Color;
 
 import org.junit.Test;
 
+/**
+ * Tests the PurePrey class that extends Animal.
+ * @author NBoar
+ */
 public class PurePreyTest {
 
-	
+	/**
+	 * Tests the construction of the PurePrey object.
+	 */
 	@Test
 	public void purePreytest() {
 		PurePrey p = new PurePrey('f');
@@ -19,6 +25,9 @@ public class PurePreyTest {
 		assertEquals(Color.GREEN, p.getColor());
 	}
 	
+	/**
+	 * Validates that pastBreedTime returns the correct value.
+	 */
 	@Test
 	public void pastBreedTimeTest() {
 		PurePrey p = new PurePrey('f');
@@ -29,6 +38,9 @@ public class PurePreyTest {
 		assertTrue(p.pastBreedTime(2));
 	}
 	
+	/**
+	 * Validates that makeBaby does indeed make a baby correctly.
+	 */
 	@Test
 	public void makeNewBaby() {
 		PurePrey parent = new PurePrey('x');
@@ -39,6 +51,9 @@ public class PurePreyTest {
 		
 		}
 	
+	/**
+	 * Validates that foodChainRank is return properly.
+	 */
 	@Test
 	public void getFoodChainRankTest() {
 		PurePrey p = new PurePrey('x');

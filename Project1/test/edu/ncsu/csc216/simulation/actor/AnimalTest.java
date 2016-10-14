@@ -9,10 +9,13 @@ import org.junit.Test;
 import edu.ncsu.csc216.simulation.environment.EcoGrid;
 import edu.ncsu.csc216.simulation.environment.Ecosystem;
 import edu.ncsu.csc216.simulation.environment.utils.Location;
-import edu.ncsu.csc216.simulation.simulator.AutomataSimulator;
 
 public class AnimalTest {
 	
+	/**
+	 * Tests the animal abstract constructor by creating instances of
+	 * each of its three subclasses and validating their values.
+	 */
 	@Test
 	public void animalTest() {
 		Configs.setToDefaults();
@@ -31,6 +34,9 @@ public class AnimalTest {
 		assertEquals(Color.RED, p3.getColor());
 	}
 	
+	/**
+	 * Validates that the isAlive methods returns the correct value.
+	 */
 	@Test
 	public void  isAliveTest() {
 		Animal p1 = new PurePrey('x');
@@ -43,6 +49,9 @@ public class AnimalTest {
 		assertTrue(p3.isAlive());
 	}
 	
+	/**
+	 * Validates that the enable method successfully enables animals.
+	 */
 	@Test
 	public void enableTest() {
 		Animal p1 = new PurePrey('x');
@@ -58,6 +67,9 @@ public class AnimalTest {
 		assertTrue(p3.canAct());
 	}
 	
+	/**
+	 * Validates that the disable method successfully disables animals.
+	 */
 	@Test
 	public void disableTest() {
 		Animal p1 = new PurePrey('x');
@@ -73,6 +85,9 @@ public class AnimalTest {
 		assertFalse(p3.canAct());
 	}
 	
+	/**
+	 * Validates that the die method actually kills the animal.
+	 */
 	@Test
 	public void dieTest() {
 		Animal p1 = new PurePrey('x');
@@ -88,6 +103,9 @@ public class AnimalTest {
 		assertFalse(p3.isAlive());
 	}
 	
+	/**
+	 * Validates that incrementTimeSinceLastMeal does its job correctly.
+	 */
 	@Test
 	public void testIncrementTimeSincelastMeal() {
 		Animal p1 = new PurePrey('x');
@@ -106,6 +124,9 @@ public class AnimalTest {
 		assertEquals(1, p3.getTimeSinceLastMeal());
 	}
 	
+	/**
+	 * Validates that incrementTimeSinceLastBreed does its job correctly.
+	 */
 	@Test
 	public void testIncrementTimeSincelastBreed() {
 		Animal p1 = new PurePrey('x');
@@ -124,6 +145,9 @@ public class AnimalTest {
 		assertEquals(1, p3.getTimeSinceLastBreed());
 	}
 	
+	/**
+	 * Tests to make sure the eat method works correctly.
+	 */
 	@Test
 	public void testEat() {
 		EcoGrid e = new Ecosystem(20, 20);

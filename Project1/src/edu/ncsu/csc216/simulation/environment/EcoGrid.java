@@ -41,8 +41,8 @@ public interface EcoGrid {
 	 * Find the first cell in the grid that shares a border with the cell at
 	 * the given position and that contains no Animal. Start looking in the
 	 * given direction and continue clockwise around the cell.
-	 * @param position
-	 * @param startDirection. Direction to start: 0 = west, 1 = north, 2 = east, 3 = south.
+	 * @param position The position to add the animal in.
+	 * @param startDirection Direction to start: 0 = west, 1 = north, 2 = east, 3 = south.
 	 * @return the location for the first empty neighbor found, or null if none are found.
 	 */
 	public Location findFirstEmptyNeighbor(Location position, int startDirection); 

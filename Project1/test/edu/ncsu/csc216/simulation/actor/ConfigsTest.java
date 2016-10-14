@@ -6,12 +6,15 @@ import java.awt.Color;
 
 import org.junit.Test;
 
-/**Test class for the static Configs class
+/**
+ * Test class for the static Configs class
  * @author NBoar
- *
  */
 public class ConfigsTest {
 
+	/**
+	 * Tests to make sure a Configs object is constructed successfully.
+	 */
 	@Test
 	public void configsTest() {
 		Configs c = new Configs();

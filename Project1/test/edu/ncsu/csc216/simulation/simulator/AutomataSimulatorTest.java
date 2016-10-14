@@ -16,6 +16,9 @@ public class AutomataSimulatorTest {
 		private static final String TEST_FILE = "test-files/testFile";
 		private static final String CONFIG_TEST_FILE = "test-files/configFile";
 		
+	/**
+	 * Tests the automataSimulator constructor with the initialization file
+	 */
 	@Test
 	public void automataSimulatorTest() {
 		AutomataSimulator as = new AutomataSimulator(TEST_FILE);
@@ -26,6 +29,9 @@ public class AutomataSimulatorTest {
 		assertEquals("I: Insect", as.getNames()[3]);
 	}
 
+	/**
+	 * Tests the automataSimulator constructor with the initialization file and configuration file.
+	 */
 	@Test
 	public void automataSimulatorConfigsTest() {
 		AutomataSimulator as = new AutomataSimulator(TEST_FILE, CONFIG_TEST_FILE);

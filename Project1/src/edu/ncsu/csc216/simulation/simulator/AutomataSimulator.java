@@ -15,9 +15,9 @@ import edu.ncsu.csc216.simulation.environment.Ecosystem;
 import edu.ncsu.csc216.simulation.environment.utils.Location;
 import edu.ncsu.csc216.simulation.environment.utils.PaintedLocation;
 
-/**The AutomataSimulator receives the input files.
+/**
+ * The AutomataSimulator receives the input files.
  * @author NBoar
- *
  */
 public class AutomataSimulator implements SimulatorInterface {
 
@@ -35,7 +35,7 @@ public class AutomataSimulator implements SimulatorInterface {
 	
 	
 	/**Constructor for the AutomataSimulator using default configurations.
-	 * @param file The name of the initial population file.
+	 * @param filePath The name of the initial population file.
 	 */
 	public AutomataSimulator(String filePath) {
 		//A string to hold any line in the file
@@ -75,8 +75,9 @@ public class AutomataSimulator implements SimulatorInterface {
 				
 				for (int j = 0; j < SIZE; j++) {
 					Animal a;
+					
 					Location l = new Location(i,j);
-	
+
 					if (line.charAt(j) == symbol[0]) {
 						a = new PurePredator(line.charAt(j));
 					}
@@ -108,8 +109,8 @@ public class AutomataSimulator implements SimulatorInterface {
 	}
 	
 	/**Constructor for the AutomataSimulator with read-in configurations.
-	 * @param file The name of the initial population file.
-	 * @param config The name of the configuration file.
+	 * @param filePath The name of the initial population file.
+	 * @param configFilePath The name of the configuration file.
 	 */
 	public AutomataSimulator(String filePath, String configFilePath) {
 		this(filePath);

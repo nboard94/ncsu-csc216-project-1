@@ -6,9 +6,15 @@ import java.awt.Color;
 
 import org.junit.Test;
 
+/**
+ * Tests the PurePredator class that extends Animal.
+ * @author NBoar
+ */
 public class PurePredatorTest {
 
-	
+	/**
+	 * Tests the construction of the PurePredator object.
+	 */
 	@Test
 	public void testPurePredator () {
 		PurePredator p = new PurePredator('X');
@@ -18,6 +24,9 @@ public class PurePredatorTest {
 		assertEquals(20, p.getFoodChainRank());
 	}
 	
+	/**
+	 * Validates that pastBreedTime returns the correct value.
+	 */
 	@Test
 	public void testPastBreedTime() {
 		PurePredator p = new PurePredator('y');
@@ -28,6 +37,9 @@ public class PurePredatorTest {
 		assertTrue(p.pastBreedTime(16));
 	}
 	
+	/**
+	 * Validates that makeBaby does indeed make a baby correctly.
+	 */
 	@Test
 	public void testMakeBaby() {
 		PurePredator p = new PurePredator('X');
@@ -35,5 +47,14 @@ public class PurePredatorTest {
 		
 		assertEquals(p.getSymbol(), b.getSymbol());
 		assertEquals(p.getClass(), b.getClass());
+	}
+	
+	/**
+	 * Validates that foodChainRank is return properly.
+	 */
+	@Test
+	public void getFoodChainRankTest() {
+		PurePredator p = new PurePredator('y');
+		assertEquals(20, p.getFoodChainRank());
 	}
 }

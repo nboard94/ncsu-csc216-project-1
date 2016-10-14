@@ -19,6 +19,9 @@ public class EcosystemTest {
 	
 	AutomataSimulator sim = new AutomataSimulator(TEST_FILE);
 	
+	/**
+	 * Tests to make sure that the specified location is infact empty.
+	 */
 	@Test
 	public void testIsEmpty() {
 		Ecosystem e = new Ecosystem(20, 20);
@@ -32,6 +35,9 @@ public class EcosystemTest {
 		
 	}
 	
+	/**
+	 * Test to make sure the remove method successfully removes an animal from the location.
+	 */
 	@Test
 	public void testRemove() {
 		Ecosystem e = new Ecosystem(20, 20);
@@ -40,6 +46,9 @@ public class EcosystemTest {
 		assertTrue(e.isEmpty(animalLoc));
 	}
 	
+	/**
+	 * Tests to make sure the method returns a location north of the specified location.
+	 */
 	@Test
 	public void dueNorthTest() {
 		Ecosystem e = new Ecosystem(20, 20);
@@ -59,6 +68,9 @@ public class EcosystemTest {
 		assertEquals(wantedLoc.getCol(), testLoc.getCol());
 	}
 	
+	/**
+	 * Tests to make sure the method returns a location south of the specified location.
+	 */
 	@Test
 	public void dueSouthTest() {
 		Ecosystem e = new Ecosystem(20, 20);
@@ -78,6 +90,9 @@ public class EcosystemTest {
 		assertEquals(wantedLoc.getCol(), testLoc.getCol());
 	}
 	
+	/**
+	 * Tests to make sure the method returns a location east of the specified location.
+	 */
 	@Test
 	public void dueEastTest() {
 		Ecosystem e = new Ecosystem(20, 20);
@@ -97,6 +112,9 @@ public class EcosystemTest {
 		assertEquals(wantedLoc.getCol(), testLoc.getCol());
 	}
 	
+	/**
+	 * Tests to make sure the method returns a location west of the specified location.
+	 */
 	@Test
 	public void dueWestTest() {
 		Ecosystem e =  new Ecosystem(20, 20);
