@@ -14,15 +14,15 @@ public class Configs {
 	/** Default color values for animals on the food chain, from lowest to highest */
 	private static final Color[] DEFAULT_COLORS = {Color.green, Color.orange, Color.red};
 	/** The set values for animals on the food chain, from lowest to highest */
-	private static Color[] PLAYERCOLORS = new Color[3];
+	private static Color[] playerColors = new Color[3];
 	/** Default values for turns it takes to starve for animals on the food chain, from lowest to highest */
 	private static final int[] DEFAULT_STARVE_TIME = {10, 6, 5};
 	/** The set values for turns it takes to starve for animals on the food chain, from lowest to highest*/
-	private static int[] STARVETIME = new int[3];
+	private static int[] starveTime = new int[3];
 	/** Default values for turns it takes to breed for animals on the food chain, from lowest to highest */
 	private static final int[] DEFAULT_BREED_TIME = {1, 7, 15};
 	/** The set values for turns it takes to breed for animals on the food chain, from lowest to highest*/
-	private static int[] BREEDTIME = new int[3];
+	private static int[] breedTime = new int[3];
 	
 	/**
 	 * Constructor for a Configurations object
@@ -38,30 +38,30 @@ public class Configs {
 	 * @param b int array for setting the BREED_TIME values
 	 */
 	public static void initConfigs(Color[] c, int[] s, int[] b) {
-		PLAYERCOLORS[0] = c[0];
-		PLAYERCOLORS[1] = c[1];
-		PLAYERCOLORS[2] = c[2];
-		STARVETIME[0] = s[0];
-		STARVETIME[1] = s[1];
-		STARVETIME[2] = s[2];
-		BREEDTIME[0] = b[0];
-		BREEDTIME[1] = b[1];
-		BREEDTIME[2] = b[2];
+		playerColors[0] = c[0];
+		playerColors[1] = c[1];
+		playerColors[2] = c[2];
+		starveTime[0] = s[0];
+		starveTime[1] = s[1];
+		starveTime[2] = s[2];
+		breedTime[0] = b[0];
+		breedTime[1] = b[1];
+		breedTime[2] = b[2];
 	}
 	
 	/**
 	 * Sets the PLAYER_COLORS, STARVE_TIME, and BREED_TIME values based on the default values
 	 */
 	public static void setToDefaults() {
-		PLAYERCOLORS[0] = DEFAULT_COLORS[0];
-		PLAYERCOLORS[1] = DEFAULT_COLORS[1];
-		PLAYERCOLORS[2] = DEFAULT_COLORS[2];
-		STARVETIME[0] = DEFAULT_STARVE_TIME[0];
-		STARVETIME[1] = DEFAULT_STARVE_TIME[1];
-		STARVETIME[2] = DEFAULT_STARVE_TIME[2];
-		BREEDTIME[0] = DEFAULT_BREED_TIME[0];
-		BREEDTIME[1] = DEFAULT_BREED_TIME[1];
-		BREEDTIME[2] = DEFAULT_BREED_TIME[2];
+		playerColors[0] = DEFAULT_COLORS[0];
+		playerColors[1] = DEFAULT_COLORS[1];
+		playerColors[2] = DEFAULT_COLORS[2];
+		starveTime[0] = DEFAULT_STARVE_TIME[0];
+		starveTime[1] = DEFAULT_STARVE_TIME[1];
+		starveTime[2] = DEFAULT_STARVE_TIME[2];
+		breedTime[0] = DEFAULT_BREED_TIME[0];
+		breedTime[1] = DEFAULT_BREED_TIME[1];
+		breedTime[2] = DEFAULT_BREED_TIME[2];
 	}
 	
 	/**
@@ -69,7 +69,7 @@ public class Configs {
 	 * @return PLAYER_COLORS[0] the value for the prey's color
 	 */
 	public static Color getPreyColor() {
-		return PLAYERCOLORS[0];
+		return playerColors[0];
 	}
 	
 	/**
@@ -77,7 +77,7 @@ public class Configs {
 	 * @return PLAYER_COLORS[1] the value for the middleanimal's color
 	 */
 	public static Color getMiddleColor() {
-		return PLAYERCOLORS[1];
+		return playerColors[1];
 	}
 	
 	/**
@@ -85,7 +85,7 @@ public class Configs {
 	 * @return PLAYER_COLORS[2] the value for the predator's color
 	 */
 	public static Color getPredatorColor() {
-		return PLAYERCOLORS[2];
+		return playerColors[2];
 	}
 	
 	/**
@@ -117,7 +117,7 @@ public class Configs {
 	 * @return STARVE_TIME[0] the value for the prey's starve time
 	 */
 	public static int getPreyStarveTime() {
-		return STARVETIME[0];
+		return starveTime[0];
 	}
 	
 	/**
@@ -125,7 +125,7 @@ public class Configs {
 	 * @return STARVE_TIME[1] the value for the medium animal's starve time
 	 */
 	public static int getMiddleStarveTime() {
-		return STARVETIME[1];
+		return starveTime[1];
 	}
 	
 	/**
@@ -133,7 +133,7 @@ public class Configs {
 	 * @return STARVE_TIME[2] the value for the predator's starve time
 	 */
 	public static int getPredatorStarveTime() {
-		return STARVETIME[2];
+		return starveTime[2];
 	}
 	
 	/**
@@ -141,7 +141,7 @@ public class Configs {
 	 * @return BREED_TIME[0] the value for the prey's breed time
 	 */
 	public static int getPreyBreedTime() {
-		return BREEDTIME[0];
+		return breedTime[0];
 	}
 	
 	/**
@@ -149,7 +149,7 @@ public class Configs {
 	 * @return BREED_TIME[1] the value for the medium animal's breed time
 	 */
 	public static int getMiddleBreedTime() {
-		return BREEDTIME[1];
+		return breedTime[1];
 	}
 	
 	/**
@@ -157,6 +157,6 @@ public class Configs {
 	 * @return BREED_TIME[2] the value for the predator's breed time
 	 */
 	public static int getPredatorBreedTime() {
-		return BREEDTIME[2];
+		return breedTime[2];
 	}
 }
