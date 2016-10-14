@@ -13,7 +13,7 @@ import org.junit.Test;
 public class ConfigsTest {
 
 	@Test
-	public void Configs() {
+	public void configsTest() {
 		Configs c = new Configs();
 		
 		// TODO

@@ -20,11 +20,6 @@ public class PredatorPreyTest {
 	}
 	
 	@Test
-	public void testAct() {
-		
-	}
-	
-	@Test
 	public void testPastBreedTime() {
 		PredatorPrey p = new PredatorPrey('y');
 		Configs.setToDefaults();

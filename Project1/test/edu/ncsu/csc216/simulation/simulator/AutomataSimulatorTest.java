@@ -2,12 +2,10 @@ package edu.ncsu.csc216.simulation.simulator;
 
 import static org.junit.Assert.*;
 
-import java.awt.Color;
-import java.nio.file.NoSuchFileException;
 
 import org.junit.Test;
 
-import edu.ncsu.csc216.simulation.actor.Configs;
+
 
 /**Tests the AutomataSimulator class
  * @author NBoar
@@ -36,16 +34,5 @@ public class AutomataSimulatorTest {
 		assertEquals("M: Mouse", as.getNames()[1]);
 		assertEquals("F: Frog", as.getNames()[2]);
 		assertEquals("I: Insect", as.getNames()[3]);
-	}
-	
-	@Test
-	public void stepTest() {
-		 
-	}
-	
-	@Test
-	public void getView() {
-		AutomataSimulator as = new AutomataSimulator(TEST_FILE);
-		
 	}
 }

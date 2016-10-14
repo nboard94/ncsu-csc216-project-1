@@ -125,19 +125,7 @@ public class AnimalTest {
 	}
 	
 	@Test
-	public void testBreed() {
-		Location oldLoc = new Location(10, 10);
-		Location newLoc;
-		EcoGrid e = new Ecosystem(20, 20);
-		
-		Animal p1 = new PurePrey('x');
-		p1.breed(oldLoc, e);
-		
-	}
-	
-	@Test
 	public void testEat() {
-		AutomataSimulator as = new AutomataSimulator("test-files/testFile");
 		EcoGrid e = new Ecosystem(20, 20);
 		Location eatSpot;
 		

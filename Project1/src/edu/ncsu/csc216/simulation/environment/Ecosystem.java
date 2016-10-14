@@ -1,7 +1,5 @@
 package edu.ncsu.csc216.simulation.environment;
 
-import javax.management.MBeanParameterInfo;
-
 import edu.ncsu.csc216.simulation.actor.Animal;
 import edu.ncsu.csc216.simulation.environment.utils.Location;
 

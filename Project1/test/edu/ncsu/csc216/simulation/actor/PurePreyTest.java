@@ -37,9 +37,7 @@ public class PurePreyTest {
 		assertEquals(parent.getSymbol(), baby.getSymbol());
 		assertEquals(parent.getClass(), baby.getClass());
 		
-		Animal DNE = null;
-		assertEquals(false, DNE.makeNewBaby());
-	}
+		}
 	
 	@Test
 	public void getFoodChainRankTest() {

@@ -19,11 +19,6 @@ public class PurePredatorTest {
 	}
 	
 	@Test
-	public void testAct() {
-		
-	}
-	
-	@Test
 	public void testPastBreedTime() {
 		PurePredator p = new PurePredator('y');
 		Configs.setToDefaults();

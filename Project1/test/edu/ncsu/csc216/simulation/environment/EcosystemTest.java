@@ -19,15 +19,6 @@ public class EcosystemTest {
 	
 	AutomataSimulator sim = new AutomataSimulator(TEST_FILE);
 	
-	/**
-	 * Tests construction of an ecosystem using different dimensions.
-	 */
-	@Test
-	public void testEcosystem() {
-		Ecosystem e = new Ecosystem(20, 20);
-		
-	}
-	
 	@Test
 	public void testIsEmpty() {
 		Ecosystem e = new Ecosystem(20, 20);

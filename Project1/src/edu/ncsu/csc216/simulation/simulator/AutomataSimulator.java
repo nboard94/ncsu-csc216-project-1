@@ -3,8 +3,6 @@ package edu.ncsu.csc216.simulation.simulator;
 import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.nio.file.NoSuchFileException;
-import java.util.IllegalFormatException;
 import java.util.Scanner;
 
 import edu.ncsu.csc216.simulation.actor.Animal;
@@ -138,7 +136,8 @@ public class AutomataSimulator implements SimulatorInterface {
 			configScan.close();
 			
 		} catch (FileNotFoundException e) {
-
+			//TODO
+			//LEFT BLANK
 		}
 		
 		Configs.initConfigs(colorSet, starveTimeSet, breedTimeSet);
@@ -167,12 +166,7 @@ public class AutomataSimulator implements SimulatorInterface {
 			for (int j = 0; j < SIZE; j++) {
 				
 				currentLoc = new Location(i, j);
-				if (simpleSystem.isEmpty(currentLoc)) {
-					//intentionally left empty
-					//empty spaces do nothing
-				}
-				
-				else {
+				if (!simpleSystem.isEmpty(currentLoc)) {
 					creature[i][j].act(currentLoc, simpleSystem);
 				}
 			}
@@ -190,13 +184,11 @@ public class AutomataSimulator implements SimulatorInterface {
 		Animal currentAnimal;
 		PaintedLocation[][] view = new PaintedLocation[SIZE][SIZE];
 		PaintedLocation currentLocToPaint;
-		Location currentLoc;
 		
 		for (int i = 0; i < SIZE; i++) {
 			
 			for (int j = 0; j < SIZE; j++) {
 				
-				currentLoc = new Location(i, j);
 				currentAnimal = map[i][j];
 				
 				if (currentAnimal == null) {
