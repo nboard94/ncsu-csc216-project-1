@@ -153,15 +153,188 @@ public class AnimalTest {
 	 * Tests to make sure the eat method works correctly.
 	 */
 	@Test
-	public void testEat() {
-		EcoGrid e = new Ecosystem(20, 20);
-		Location eatSpot;
+	public void testBreed() {
+		EcoGrid e = new Ecosystem(3, 3);
+		Animal f = new PredatorPrey('f');
+		Location r0c0 = new Location(0, 0);
+		Location r0c1 = new Location(0, 1);
+		Location r0c2 = new Location(0, 2);
+		Location r1c0 = new Location(1, 0);
+		Location r1c1 = new Location(1, 1);
+		Location r1c2 = new Location(1, 2);
+		Location r2c0 = new Location(2, 0);
+		Location r2c1 = new Location(2, 1);
+		Location r2c2 = new Location(2, 2);
+		e.add(null, r0c0);
+		e.add(f, r0c1);
+		e.add(f, r0c2);
+		e.add(f, r1c0);
+		e.add(f, r1c1);
+		e.add(null, r1c2);
+		e.add(null, r2c0);
+		e.add(f, r2c1);
+		e.add(null, r2c2);
 		
-		//test for west food
-		eatSpot = new Location(1, 3);
-		e.getItemAt(eatSpot).eat(eatSpot, e);
-		assertEquals(null, e.getItemAt(eatSpot));
-		assertEquals('O', e.getItemAt(new Location(1, 2)).getSymbol());
+		e.getItemAt(r1c1).breed(r1c1, e);
 		
+		assertEquals('f', e.getItemAt(r1c2).getSymbol());
+		
+		
+	}
+	
+	/**
+	 * Validates that the move method works properly.
+	 */
+	@Test
+	public void testMove() {
+		EcoGrid e = new Ecosystem(3, 3);
+		Animal f = new PredatorPrey('f');
+		Location r0c0 = new Location(0, 0);
+		Location r0c1 = new Location(0, 1);
+		Location r0c2 = new Location(0, 2);
+		Location r1c0 = new Location(1, 0);
+		Location r1c1 = new Location(1, 1);
+		Location r1c2 = new Location(1, 2);
+		Location r2c0 = new Location(2, 0);
+		Location r2c1 = new Location(2, 1);
+		Location r2c2 = new Location(2, 2);
+		e.add(null, r0c0);
+		e.add(f, r0c1);
+		e.add(f, r0c2);
+		e.add(f, r1c0);
+		e.add(f, r1c1);
+		e.add(null, r1c2);
+		e.add(null, r2c0);
+		e.add(f, r2c1);
+		e.add(null, r2c2);
+		
+		e.getItemAt(r1c1).move(r1c1, e);
+		
+		assertEquals('f', e.getItemAt(r1c2).getSymbol());
+		assertNull(e.getItemAt(r1c1));	
+	}
+	
+	/**
+	 * Validates that the move method works properly to the east.
+	 */
+	@Test
+	public void testEatEast() {
+		EcoGrid e = new Ecosystem(3, 3);
+		Animal f = new PredatorPrey('f');
+		Animal p = new PurePrey('p');
+		Location r0c0 = new Location(0, 0);
+		Location r0c1 = new Location(0, 1);
+		Location r0c2 = new Location(0, 2);
+		Location r1c0 = new Location(1, 0);
+		Location r1c1 = new Location(1, 1);
+		Location r1c2 = new Location(1, 2);
+		Location r2c0 = new Location(2, 0);
+		Location r2c1 = new Location(2, 1);
+		Location r2c2 = new Location(2, 2);
+		e.add(null, r0c0);
+		e.add(f, r0c1);
+		e.add(f, r0c2);
+		e.add(f, r1c0);
+		e.add(f, r1c1);
+		e.add(p, r1c2);
+		e.add(null, r2c0);
+		e.add(f, r2c1);
+		e.add(null, r2c2);
+		
+		assertTrue(e.getItemAt(r1c1).eat(r1c1, e));
+		assertEquals('f', e.getItemAt(r1c2).getSymbol());
+	}
+	
+	/**
+	 * Validates that the move method works properly to the west.
+	 */
+	@Test
+	public void testEatWest() {
+		EcoGrid e = new Ecosystem(3, 3);
+		Animal f = new PredatorPrey('f');
+		Animal p = new PurePrey('p');
+		Location r0c0 = new Location(0, 0);
+		Location r0c1 = new Location(0, 1);
+		Location r0c2 = new Location(0, 2);
+		Location r1c0 = new Location(1, 0);
+		Location r1c1 = new Location(1, 1);
+		Location r1c2 = new Location(1, 2);
+		Location r2c0 = new Location(2, 0);
+		Location r2c1 = new Location(2, 1);
+		Location r2c2 = new Location(2, 2);
+		e.add(null, r0c0);
+		e.add(f, r0c1);
+		e.add(f, r0c2);
+		e.add(p, r1c0);
+		e.add(f, r1c1);
+		e.add(f, r1c2);
+		e.add(null, r2c0);
+		e.add(f, r2c1);
+		e.add(null, r2c2);
+		
+		assertTrue(e.getItemAt(r1c1).eat(r1c1, e));
+		assertEquals('f', e.getItemAt(r1c0).getSymbol());
+	}
+	
+	/**
+	 * Validates that the move method works properly to the north.
+	 */
+	@Test
+	public void testEatNorth() {
+		EcoGrid e = new Ecosystem(3, 3);
+		Animal f = new PredatorPrey('f');
+		Animal p = new PurePrey('p');
+		Location r0c0 = new Location(0, 0);
+		Location r0c1 = new Location(0, 1);
+		Location r0c2 = new Location(0, 2);
+		Location r1c0 = new Location(1, 0);
+		Location r1c1 = new Location(1, 1);
+		Location r1c2 = new Location(1, 2);
+		Location r2c0 = new Location(2, 0);
+		Location r2c1 = new Location(2, 1);
+		Location r2c2 = new Location(2, 2);
+		e.add(null, r0c0);
+		e.add(p, r0c1);
+		e.add(f, r0c2);
+		e.add(f, r1c0);
+		e.add(f, r1c1);
+		e.add(f, r1c2);
+		e.add(null, r2c0);
+		e.add(f, r2c1);
+		e.add(null, r2c2);
+		
+		assertTrue(e.getItemAt(r1c1).eat(r1c1, e));
+		assertEquals('f', e.getItemAt(r0c1).getSymbol());
+	}
+	
+	/**
+	 * Validates that the move method works properly to the south.
+	 */
+	@Test
+	public void testEatSouth() {
+		EcoGrid e = new Ecosystem(3, 3);
+		Animal f = new PredatorPrey('f');
+		Animal p = new PurePrey('p');
+		Location r0c0 = new Location(0, 0);
+		Location r0c1 = new Location(0, 1);
+		Location r0c2 = new Location(0, 2);
+		Location r1c0 = new Location(1, 0);
+		Location r1c1 = new Location(1, 1);
+		Location r1c2 = new Location(1, 2);
+		Location r2c0 = new Location(2, 0);
+		Location r2c1 = new Location(2, 1);
+		Location r2c2 = new Location(2, 2);
+		e.add(null, r0c0);
+		e.add(f, r0c1);
+		e.add(f, r0c2);
+		e.add(f, r1c0);
+		e.add(f, r1c1);
+		e.add(f, r1c2);
+		e.add(null, r2c0);
+		e.add(p, r2c1);
+		e.add(null, r2c2);
+		
+		assertTrue(e.getItemAt(r1c1).eat(r1c1, e));
+		assertEquals('f', e.getItemAt(r2c1).getSymbol());
 	}
 }
