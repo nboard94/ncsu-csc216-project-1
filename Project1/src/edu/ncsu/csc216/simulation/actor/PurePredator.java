@@ -60,7 +60,7 @@ public class PurePredator extends Animal {
 
 	@Override
 	protected boolean pastBreedTime(int i) {
-		if (this.getTimeSinceLastBreed() > i) {
+		if (Configs.getPredatorBreedTime() < i) {
 			return true;
 		}
 		return false;

@@ -1,5 +1,7 @@
 package edu.ncsu.csc216.simulation.environment;
 
+import javax.management.MBeanParameterInfo;
+
 import edu.ncsu.csc216.simulation.actor.Animal;
 import edu.ncsu.csc216.simulation.environment.utils.Location;
 
@@ -171,10 +173,14 @@ public class Ecosystem implements EcoGrid{
 	}
 	
 	public void buryTheDead() {
+		Location currentLoc;
+		
 		for (int i = 0; i < 20; i++) {
 			for (int j = 0; j < 20; j++) {
-				if (!map[i][j].isAlive()) {
-					//this.remove(map[i][j]);
+				
+				currentLoc = new Location(i, j);
+				if (map[i][j] != null && !map[i][j].isAlive()) {
+					this.remove(currentLoc);
 				}
 			}
 		}

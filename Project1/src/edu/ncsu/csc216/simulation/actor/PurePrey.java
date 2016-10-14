@@ -56,7 +56,7 @@ public class PurePrey extends Animal {
 
 	@Override
 	protected boolean pastBreedTime(int i) {
-		if (this.getTimeSinceLastBreed() > i) {
+		if (Configs.getPreyBreedTime() < i) {
 			return true;
 		}
 		return false;

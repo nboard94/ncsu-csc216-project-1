@@ -124,5 +124,5 @@ public class EcosystemTest {
 		assertEquals(wantedLoc.getRow(), testLoc.getRow());
 		assertEquals(wantedLoc.getCol(), testLoc.getCol());
 	}
-	
+
 }

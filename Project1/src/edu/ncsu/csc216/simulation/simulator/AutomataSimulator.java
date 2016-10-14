@@ -179,16 +179,7 @@ public class AutomataSimulator implements SimulatorInterface {
 		}
 		
 		//Traverse the grid and remove all dead animals
-		for (int i = 0; i < SIZE; i++) {
-			
-			for (int j = 0; j < SIZE; j++) {
-				
-				currentLoc = new Location(i, j);
-				if (!simpleSystem.isEmpty(currentLoc) && !creature[i][j].isAlive()) {
-					simpleSystem.remove(currentLoc);
-				}
-			}
-		}
+		simpleSystem.buryTheDead();
 		
 		
 	}

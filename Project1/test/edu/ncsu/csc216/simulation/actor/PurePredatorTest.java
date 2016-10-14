@@ -25,13 +25,20 @@ public class PurePredatorTest {
 	
 	@Test
 	public void testPastBreedTime() {
+		PurePredator p = new PurePredator('y');
+		Configs.setToDefaults();
 		
+		assertFalse(p.pastBreedTime(14));
+		assertFalse(p.pastBreedTime(15));
+		assertTrue(p.pastBreedTime(16));
 	}
 	
 	@Test
 	public void testMakeBaby() {
 		PurePredator p = new PurePredator('X');
 		Animal b = p.makeNewBaby();
+		
 		assertEquals(p.getSymbol(), b.getSymbol());
+		assertEquals(p.getClass(), b.getClass());
 	}
 }

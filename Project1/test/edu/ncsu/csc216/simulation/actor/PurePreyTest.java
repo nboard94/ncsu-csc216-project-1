@@ -26,7 +26,21 @@ public class PurePreyTest {
 		
 		assertFalse(p.pastBreedTime(0));
 		assertFalse(p.pastBreedTime(1));
-		System.out.println(Configs.getPreyBreedTime());
 		assertTrue(p.pastBreedTime(2));
+	}
+	
+	@Test
+	public void makeNewBaby() {
+		PurePrey parent = new PurePrey('x');
+		Animal baby = parent.makeNewBaby();
+		
+		assertEquals(parent.getSymbol(), baby.getSymbol());
+		assertEquals(parent.getClass(), baby.getClass());
+	}
+	
+	@Test
+	public void getFoodChainRankTest() {
+		PurePrey p = new PurePrey('x');
+		assertEquals(0, p.getFoodChainRank());
 	}
 }
