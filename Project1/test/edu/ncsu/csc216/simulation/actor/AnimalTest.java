@@ -6,6 +6,10 @@ import java.awt.Color;
 
 import org.junit.Test;
 
+import edu.ncsu.csc216.simulation.environment.EcoGrid;
+import edu.ncsu.csc216.simulation.environment.Ecosystem;
+import edu.ncsu.csc216.simulation.environment.utils.Location;
+
 public class AnimalTest {
 	
 	@Test
@@ -114,5 +118,16 @@ public class AnimalTest {
 		assertEquals(0, p3.getTimeSinceLastBreed());
 		p3.incrementTimeSinceLastBreed();
 		assertEquals(1, p3.getTimeSinceLastBreed());
+	}
+	
+	@Test
+	public void testBreed() {
+		Location oldLoc = new Location(10, 10);
+		Location newLoc;
+		EcoGrid e = new Ecosystem(20, 20);
+		
+		Animal p1 = new PurePrey('x');
+		p1.breed(oldLoc, e);
+		
 	}
 }
