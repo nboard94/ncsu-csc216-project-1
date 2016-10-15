@@ -100,6 +100,6 @@ public class AutomataSimulatorTest {
 			}
 		}
 		
-		assertEquals(as.getView(), view);
+		assertEquals(as.getView()[0][0].getColor(), view[0][0].getColor());
 	}
 }
