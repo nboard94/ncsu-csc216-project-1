@@ -72,15 +72,18 @@ public class PurePreyTest {
 		EcoGrid e = new Ecosystem(2, 2);
 		Location r0c0 = new Location(0, 0);
 		Location r0c1 = new Location(0, 1);
-		Location r1c0 = new Location(1, 0);
 		Location r1c1 = new Location(1, 1);
+
 		Animal p = new PurePrey('x');
 		
 		e.add(p, r0c0);
 		e.add(p, r0c1);
+		e.add(null, r1c1);
 		
 		p.enable();
 		
 		p.act(r0c0, e);
+		
+		assertNull(e.getItemAt(r1c1));
 	}
 }

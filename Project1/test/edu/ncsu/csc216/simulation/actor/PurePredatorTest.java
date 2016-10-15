@@ -71,7 +71,6 @@ public class PurePredatorTest {
 		Location r0c0 = new Location(0, 0);
 		Location r0c1 = new Location(0, 1);
 		Location r1c0 = new Location(1, 0);
-		Location r1c1 = new Location(1, 1);
 		Animal p = new PurePredator('x');
 		Animal prey = new PredatorPrey('y');
 		
@@ -81,7 +80,6 @@ public class PurePredatorTest {
 		
 		p.enable();
 		
-		assertTrue(true);
-		//p.act(r0c0, e);
+		assertEquals('x', e.getItemAt(r0c0).getSymbol());
 	}
 }

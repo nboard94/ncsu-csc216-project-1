@@ -89,8 +89,7 @@ public class PredatorPreyTest {
 			e.getItemAt(r0c0).incrementTimeSinceLastMeal();
 		}
 		
-		assertTrue(true);
-		//p.act(r0c0, e);
+		assertEquals('x', e.getItemAt(r0c0).getSymbol());
 		
 	}
 }
