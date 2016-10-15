@@ -3,6 +3,7 @@ package edu.ncsu.csc216.simulation.simulator;
 import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import edu.ncsu.csc216.simulation.actor.Animal;
@@ -37,7 +38,7 @@ public class AutomataSimulator implements SimulatorInterface {
 	/**Constructor for the AutomataSimulator using default configurations.
 	 * @param filePath The name of the initial population file.
 	 */
-	public AutomataSimulator(String filePath) {
+	public AutomataSimulator(String filePath) throws InputMismatchException{
 		//A string to hold any line in the file
 		String line;
 		//Ecosystem initialized to be SIZExSIZE big
@@ -99,8 +100,7 @@ public class AutomataSimulator implements SimulatorInterface {
 			fileScan.close();
 			
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new InputMismatchException();
 		}
 		
 		Configs.setToDefaults();

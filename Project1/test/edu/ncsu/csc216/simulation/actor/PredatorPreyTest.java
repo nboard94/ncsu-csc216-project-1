@@ -75,11 +75,20 @@ public class PredatorPreyTest {
 		Location r1c0 = new Location(1, 0);
 		Location r1c1 = new Location(1, 1);
 		Animal p = new PredatorPrey('x');
+		Animal prey = new PurePrey('y');
 		
 		e.add(p, r0c0);
 		e.add(p, r0c1);
+		e.add(prey, r1c0);
+		e.add(null, r1c1);
 		
-		p.enable();
+		e.getItemAt(r0c0).enable();
+		
+		for (int i = 0; i < 100; i++) {
+			e.getItemAt(r0c0).incrementTimeSinceLastBreed();
+			e.getItemAt(r0c0).incrementTimeSinceLastMeal();
+		}
+		
 		
 		p.act(r0c0, e);
 	}

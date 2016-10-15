@@ -73,9 +73,11 @@ public class PurePredatorTest {
 		Location r1c0 = new Location(1, 0);
 		Location r1c1 = new Location(1, 1);
 		Animal p = new PurePredator('x');
+		Animal prey = new PredatorPrey('y');
 		
 		e.add(p, r0c0);
 		e.add(p, r0c1);
+		e.add(prey, r1c0);
 		
 		p.enable();
 		
